@@ -2,6 +2,7 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
+#include "OPGPlayerController.h"
 #include "EnhancedInputComponent.h"
 
 APlayerPawn::APlayerPawn()
@@ -29,6 +30,11 @@ APlayerPawn::APlayerPawn()
 	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	CameraComp->SetupAttachment(SpringArmComp, USpringArmComponent::SocketName);
 	CameraComp->bUsePawnControlRotation = false;
+
+	NomalSpeed = 5.0f;
+	SprintSpeedMultiplier = 1.7f;
+	SprintSpeed = NomalSpeed * SprintSpeedMultiplier;
+	Sensitivity = 1.0f;
 }
 
 
@@ -38,37 +44,54 @@ void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 	if (UEnhancedInputComponent* EnhancedInput = Cast<UEnhancedInputComponent>(PlayerInputComponent)) 
 	{
-		
+		if (AOPGPlayerController* PlayerController = Cast<AOPGPlayerController>(GetController()))
+		{
+			if (PlayerController->MoveAction)
+			{
+				EnhancedInput->BindAction(
+					PlayerController->MoveAction,
+					ETriggerEvent::Triggered,
+					this,
+					&APlayerPawn::Move
+				);
+			}
+			if (PlayerController->LookAction)
+			{
+				EnhancedInput->BindAction(
+					PlayerController->LookAction,
+					ETriggerEvent::Triggered,
+					this,
+					&APlayerPawn::Look
+				);
+			}
+
+		}
 	}
 
 }
 
 void APlayerPawn::Move(const FInputActionValue& value)
 {
+	if (!Controller) return;
+
+	const FVector2D MoveInput = value.Get<FVector2D>();
+	if (!FMath::IsNearlyZero(MoveInput.X))
+	{
+		AddActorWorldOffset(GetControlRotation().RotateVector(FVector::ForwardVector)*FVector(1, 1, 0) * MoveInput.X *NomalSpeed);
+	}
+	if (!FMath::IsNearlyZero(MoveInput.Y))
+	{
+		AddActorWorldOffset(GetControlRotation().RotateVector(FVector::RightVector) * MoveInput.Y * NomalSpeed);
+	}
 }
 
 void APlayerPawn::Look(const FInputActionValue& value)
 {
+	FVector2D LookInput = value.Get<FVector2D>();
+
+	AddControllerYawInput(LookInput.X * Sensitivity);
+	AddControllerPitchInput(LookInput.Y * Sensitivity);
 }
 
-void APlayerPawn::StartJump(const FInputActionValue& value)
-{
-}
-
-void APlayerPawn::StopJump(const FInputActionValue& value)
-{
-}
-
-void APlayerPawn::StartSprint(const FInputActionValue& value)
-{
-}
-
-void APlayerPawn::StopSprint(const FInputActionValue& value)
-{
-}
-
-void APlayerPawn::OnDeath()
-{
-}
 
 

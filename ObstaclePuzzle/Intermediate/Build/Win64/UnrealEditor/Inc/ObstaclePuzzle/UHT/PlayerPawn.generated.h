@@ -16,10 +16,6 @@ struct FInputActionValue;
 #define OBSTACLEPUZZLE_PlayerPawn_generated_h
 
 #define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlayerPawn_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
-	DECLARE_FUNCTION(execStopSprint); \
-	DECLARE_FUNCTION(execStartSprint); \
-	DECLARE_FUNCTION(execStopJump); \
-	DECLARE_FUNCTION(execStartJump); \
 	DECLARE_FUNCTION(execLook); \
 	DECLARE_FUNCTION(execMove);
 

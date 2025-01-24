@@ -19,29 +19,23 @@ public:
 	APlayerPawn();
 
 protected:
-	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "Setting")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting")
 	float SprintSpeedMultiplier;
-	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "Setting")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting")
 	float Sensitivity;
 
 	UFUNCTION()
 	void Move(const FInputActionValue& value);
 	UFUNCTION()
 	void Look(const FInputActionValue& value);
-	UFUNCTION()
-	void StartJump(const FInputActionValue& value);
-	UFUNCTION()
-	void StopJump(const FInputActionValue& value);
-	UFUNCTION()
-	void StartSprint(const FInputActionValue& value);
-	UFUNCTION()
-	void StopSprint(const FInputActionValue& value);
 
-	void OnDeath();
-
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UCapsuleComponent* Collision;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USkeletalMeshComponent* SkeletalMesh;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USpringArmComponent* SpringArmComp;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UCameraComponent* CameraComp;
 
 
