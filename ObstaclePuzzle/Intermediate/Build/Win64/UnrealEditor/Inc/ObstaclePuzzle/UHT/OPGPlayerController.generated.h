@@ -24,8 +24,6 @@ public: \
 
 
 #define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGPlayerController_h_15_ENHANCED_CONSTRUCTORS \
-	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API AOPGPlayerController(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	AOPGPlayerController(AOPGPlayerController&&); \
@@ -33,7 +31,7 @@ private: \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, AOPGPlayerController); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AOPGPlayerController); \
-	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AOPGPlayerController) \
+	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AOPGPlayerController) \
 	NO_API virtual ~AOPGPlayerController();
 
 
