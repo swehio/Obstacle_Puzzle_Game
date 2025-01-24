@@ -11,6 +11,7 @@
     <None Include="..\..\Source\ObstaclePuzzleEditor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.vsconfig" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
     </Filter>
@@ -37,6 +38,24 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\ObstaclePuzzle.h">
       <Filter>Source\ObstaclePuzzle</Filter>
+    </ClCompile>
+    <Filter Include="Source\ObstaclePuzzle\Private">
+      <UniqueIdentifier>{B90C1EBD-F1D4-3374-8029-CAF2604C2BDD}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\OPGPlayerController.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\PlayerPawn.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
+    <Filter Include="Source\ObstaclePuzzle\Public">
+      <UniqueIdentifier>{EFD472C4-4274-3716-ABDA-D80622698B31}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\OPGPlayerController.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\PlayerPawn.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
