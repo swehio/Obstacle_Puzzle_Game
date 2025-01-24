@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"D:\\Git\\Obstacle_Puzzle_Game\\ObstaclePuzzle\\Source\\ObstaclePuzzle\\ObstaclePuzzle.Build.cs",
+		"D:\\Git\\Obstacle_Puzzle_Game\\ObstaclePuzzle\\Source\\ObstaclePuzzle.Target.cs",
+		"D:\\Git\\Obstacle_Puzzle_Game\\ObstaclePuzzle\\Source\\ObstaclePuzzleEditor.Target.cs"
+	],
+	"EngineVersion": "5.5.1"
+}
