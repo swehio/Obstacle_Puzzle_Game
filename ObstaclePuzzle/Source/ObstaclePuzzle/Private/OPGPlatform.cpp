@@ -16,12 +16,14 @@ AOPGPlatform::AOPGPlatform()
 
 	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh"));
 	StaticMesh->SetupAttachment(BoxCollision);
+
+	DropDelay = 3;
+	RepeatTime = 3;
 }
 
 void AOPGPlatform::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 
@@ -29,6 +31,8 @@ void AOPGPlatform::BeginPlay()
 void AOPGPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	GetWorld()->GetTimerManager().SetTimer(PlatformTimerHandle, this, &AOPGPlatform::Drop, DropDelay, false);
 
 }
 
@@ -39,5 +43,5 @@ void AOPGPlatform::SwitchRendering()
 
 void AOPGPlatform::Drop()
 {
-
+	StaticMesh->SetSimulatePhysics(true);
 }

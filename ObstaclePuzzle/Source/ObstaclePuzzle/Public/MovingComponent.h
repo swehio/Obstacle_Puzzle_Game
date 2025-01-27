@@ -14,6 +14,7 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	
 
 	FVector StartLocation;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
@@ -31,9 +32,6 @@ protected:
 	bool MoveY;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	bool MoveZ;
-
-
-	FVector MoveWhere();
 
 public:	
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;

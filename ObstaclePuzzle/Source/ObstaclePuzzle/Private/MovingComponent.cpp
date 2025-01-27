@@ -10,7 +10,7 @@ UMovingComponent::UMovingComponent()
 	MoveSpeed = 1.0f;
 	MaxRange = 50.0f;
 	addSpeed = 1.0f;
-	MoveX = false;
+	MoveX = true;
 	MoveY = false;
 	MoveZ = false;
 

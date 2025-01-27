@@ -11,7 +11,7 @@ APlayerPawn::APlayerPawn()
 	PrimaryActorTick.bCanEverTick = false;
 
 	Collision = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Collision"));
-	Collision->SetCollisionProfileName(TEXT("OverlapAllDynamic"));
+	Collision->SetCollisionProfileName(TEXT("BlockAll"));
 	Collision->SetCapsuleSize(40.0, 92.0);
 	Collision->SetSimulatePhysics(false);
 	SetRootComponent(Collision);
@@ -77,11 +77,11 @@ void APlayerPawn::Move(const FInputActionValue& value)
 	const FVector2D MoveInput = value.Get<FVector2D>();
 	if (!FMath::IsNearlyZero(MoveInput.X))
 	{
-		AddActorWorldOffset(GetControlRotation().RotateVector(FVector::ForwardVector)*FVector(1, 1, 0) * MoveInput.X *NomalSpeed);
+		AddActorWorldOffset(GetControlRotation().RotateVector(FVector::ForwardVector)*FVector(1, 1, 0) * MoveInput.X *NomalSpeed, true);
 	}
 	if (!FMath::IsNearlyZero(MoveInput.Y))
 	{
-		AddActorWorldOffset(GetControlRotation().RotateVector(FVector::RightVector) * MoveInput.Y * NomalSpeed);
+		AddActorWorldOffset(GetControlRotation().RotateVector(FVector::RightVector) * MoveInput.Y * NomalSpeed, true);
 	}
 }
 

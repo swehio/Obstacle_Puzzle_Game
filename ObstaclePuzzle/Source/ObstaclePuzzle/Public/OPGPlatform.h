@@ -19,13 +19,21 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
-
+	
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* Scene;
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* StaticMesh;
 	UPROPERTY(VisibleAnywhere)
 	UBoxComponent* BoxCollision;
+
+
+	FTimerHandle PlatformTimerHandle;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Timer")
+	float RepeatTime;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Timer")
+	float DropDelay;
+
 
 	void SwitchRendering();
 	void Drop();
