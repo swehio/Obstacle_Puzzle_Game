@@ -45,6 +45,9 @@
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\BasePlatform.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\DronePawn.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\DropingPlatform.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
@@ -76,6 +79,9 @@
       <UniqueIdentifier>{EFD472C4-4274-3716-ABDA-D80622698B31}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\BasePlatform.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\DronePawn.h">
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\DropingPlatform.h">

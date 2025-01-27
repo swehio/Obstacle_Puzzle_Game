@@ -46,10 +46,10 @@ void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	{
 		if (AOPGPlayerController* PlayerController = Cast<AOPGPlayerController>(GetController()))
 		{
-			if (PlayerController->MoveAction)
+			if (PlayerController->MoveXYAction)
 			{
 				EnhancedInput->BindAction(
-					PlayerController->MoveAction,
+					PlayerController->MoveXYAction,
 					ETriggerEvent::Triggered,
 					this,
 					&APlayerPawn::Move
@@ -74,14 +74,14 @@ void APlayerPawn::Move(const FInputActionValue& value)
 {
 	if (!Controller) return;
 
-	const FVector2D MoveInput = value.Get<FVector2D>();
-	if (!FMath::IsNearlyZero(MoveInput.X))
+	const FVector2D MoveInputXY = value.Get<FVector2D>();
+	if (!FMath::IsNearlyZero(MoveInputXY.X))
 	{
-		AddActorWorldOffset(GetControlRotation().RotateVector(FVector::ForwardVector)*FVector(1, 1, 0) * MoveInput.X *NomalSpeed, true);
+		AddActorWorldOffset(GetControlRotation().RotateVector(FVector::ForwardVector)*FVector(1, 1, 0) * MoveInputXY.X *NomalSpeed, true);
 	}
-	if (!FMath::IsNearlyZero(MoveInput.Y))
+	if (!FMath::IsNearlyZero(MoveInputXY.Y))
 	{
-		AddActorWorldOffset(GetControlRotation().RotateVector(FVector::RightVector) * MoveInput.Y * NomalSpeed, true);
+		AddActorWorldOffset(GetControlRotation().RotateVector(FVector::RightVector) * MoveInputXY.Y * NomalSpeed, true);
 	}
 }
 

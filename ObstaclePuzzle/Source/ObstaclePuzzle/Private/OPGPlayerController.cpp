@@ -6,7 +6,7 @@
 
 AOPGPlayerController::AOPGPlayerController() :
 	InputMappingContext(nullptr),
-	MoveAction(nullptr),
+	MoveXYAction(nullptr),
 	LookAction(nullptr)
 {
 }
