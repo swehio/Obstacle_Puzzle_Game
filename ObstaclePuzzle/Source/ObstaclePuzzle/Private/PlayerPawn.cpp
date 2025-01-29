@@ -11,7 +11,7 @@ APlayerPawn::APlayerPawn()
 	PrimaryActorTick.bCanEverTick = false;
 
 	Collision = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Collision"));
-	Collision->SetCollisionProfileName(TEXT("OverlapAllDynamic"));
+	Collision->SetCollisionProfileName(TEXT("BlockAll"));
 	Collision->SetCapsuleSize(40.0, 92.0);
 	Collision->SetSimulatePhysics(false);
 	SetRootComponent(Collision);
@@ -46,10 +46,10 @@ void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	{
 		if (AOPGPlayerController* PlayerController = Cast<AOPGPlayerController>(GetController()))
 		{
-			if (PlayerController->MoveAction)
+			if (PlayerController->MoveXYAction)
 			{
 				EnhancedInput->BindAction(
-					PlayerController->MoveAction,
+					PlayerController->MoveXYAction,
 					ETriggerEvent::Triggered,
 					this,
 					&APlayerPawn::Move
@@ -74,14 +74,14 @@ void APlayerPawn::Move(const FInputActionValue& value)
 {
 	if (!Controller) return;
 
-	const FVector2D MoveInput = value.Get<FVector2D>();
-	if (!FMath::IsNearlyZero(MoveInput.X))
+	const FVector2D MoveInputXY = value.Get<FVector2D>();
+	if (!FMath::IsNearlyZero(MoveInputXY.X))
 	{
-		AddActorWorldOffset(GetControlRotation().RotateVector(FVector::ForwardVector)*FVector(1, 1, 0) * MoveInput.X *NomalSpeed);
+		AddActorWorldOffset(GetControlRotation().RotateVector(FVector::ForwardVector)*FVector(1, 1, 0) * MoveInputXY.X *NomalSpeed, true);
 	}
-	if (!FMath::IsNearlyZero(MoveInput.Y))
+	if (!FMath::IsNearlyZero(MoveInputXY.Y))
 	{
-		AddActorWorldOffset(GetControlRotation().RotateVector(FVector::RightVector) * MoveInput.Y * NomalSpeed);
+		AddActorWorldOffset(GetControlRotation().RotateVector(FVector::RightVector) * MoveInputXY.Y * NomalSpeed, true);
 	}
 }
 

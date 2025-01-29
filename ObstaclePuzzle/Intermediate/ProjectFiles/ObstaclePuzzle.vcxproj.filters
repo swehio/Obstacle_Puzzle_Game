@@ -42,19 +42,73 @@
     <Filter Include="Source\ObstaclePuzzle\Private">
       <UniqueIdentifier>{B90C1EBD-F1D4-3374-8029-CAF2604C2BDD}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\BasePlatform.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\DronePawn.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\DropingPlatform.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\MovingComponent.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\MovingPlatform.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\OPGCharacter.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\OPGPlatform.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\OPGPlayerController.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\PlatformInterface.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\PlayerPawn.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\RotatingComponent.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
     <Filter Include="Source\ObstaclePuzzle\Public">
       <UniqueIdentifier>{EFD472C4-4274-3716-ABDA-D80622698B31}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\BasePlatform.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\DronePawn.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\DropingPlatform.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\MovingComponent.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\MovingPlatform.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\OPGCharacter.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\OPGPlatform.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\OPGPlayerController.h">
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\PlatformInterface.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\PlayerPawn.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\RotatingComponent.h">
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
   </ItemGroup>
