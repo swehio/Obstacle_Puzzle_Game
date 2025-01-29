@@ -17,7 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeObstaclePuzzle_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0x83A97023,
+				0xECF2179F,
 				0xB1BD7EE9,
 				METADATA_PARAMS(0, nullptr)
 			};
@@ -25,5 +25,5 @@ void EmptyLinkFunctionForGeneratedCodeObstaclePuzzle_init() {}
 		}
 		return Z_Registration_Info_UPackage__Script_ObstaclePuzzle.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_ObstaclePuzzle(Z_Construct_UPackage__Script_ObstaclePuzzle, TEXT("/Script/ObstaclePuzzle"), Z_Registration_Info_UPackage__Script_ObstaclePuzzle, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x83A97023, 0xB1BD7EE9));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_ObstaclePuzzle(Z_Construct_UPackage__Script_ObstaclePuzzle, TEXT("/Script/ObstaclePuzzle"), Z_Registration_Info_UPackage__Script_ObstaclePuzzle, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xECF2179F, 0xB1BD7EE9));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
