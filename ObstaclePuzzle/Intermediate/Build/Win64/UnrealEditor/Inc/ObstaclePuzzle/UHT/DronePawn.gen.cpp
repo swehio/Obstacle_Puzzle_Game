@@ -11,11 +11,12 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeDronePawn() {}
 
 // Begin Cross Module References
+COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FRotator();
 ENGINE_API UClass* Z_Construct_UClass_APawn();
 ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_UCapsuleComponent_NoRegister();
-ENGINE_API UClass* Z_Construct_UClass_USkeletalMeshComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
+ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 ENHANCEDINPUT_API UScriptStruct* Z_Construct_UScriptStruct_FInputActionValue();
 OBSTACLEPUZZLE_API UClass* Z_Construct_UClass_ADronePawn();
 OBSTACLEPUZZLE_API UClass* Z_Construct_UClass_ADronePawn_NoRegister();
@@ -243,7 +244,11 @@ struct Z_Construct_UClass_ADronePawn_Statics
 		{ "Category", "MoveSetting" },
 		{ "ModuleRelativePath", "Public/DronePawn.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Gravity_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GravityMin_MetaData[] = {
+		{ "Category", "MoveSetting" },
+		{ "ModuleRelativePath", "Public/DronePawn.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GravityMax_MetaData[] = {
 		{ "Category", "MoveSetting" },
 		{ "ModuleRelativePath", "Public/DronePawn.h" },
 	};
@@ -255,12 +260,30 @@ struct Z_Construct_UClass_ADronePawn_Statics
 		{ "Category", "MoveSetting" },
 		{ "ModuleRelativePath", "Public/DronePawn.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_RollNum_MetaData[] = {
+		{ "Category", "MoveSetting" },
+		{ "ModuleRelativePath", "Public/DronePawn.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_WingRotation_MetaData[] = {
+		{ "Category", "MoveSetting" },
+		{ "ModuleRelativePath", "Public/DronePawn.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Collision_MetaData[] = {
 		{ "Category", "DronePawn" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/DronePawn.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SkeletalMesh_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_FlightComp_MetaData[] = {
+		{ "Category", "DronePawn" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/DronePawn.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_WingLeftComp_MetaData[] = {
+		{ "Category", "DronePawn" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/DronePawn.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_WingRightComp_MetaData[] = {
 		{ "Category", "DronePawn" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/DronePawn.h" },
@@ -280,12 +303,17 @@ struct Z_Construct_UClass_ADronePawn_Statics
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_XYSpeed;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_UDSpeed;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_AirFriction;
-	static const UECodeGen_Private::FFloatPropertyParams NewProp_Gravity;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_GravityMin;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_GravityMax;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_XYFloorSpeed;
 	static void NewProp_IsOnFloor_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_IsOnFloor;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_RollNum;
+	static const UECodeGen_Private::FStructPropertyParams NewProp_WingRotation;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Collision;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_SkeletalMesh;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_FlightComp;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_WingLeftComp;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_WingRightComp;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SpringArmComp;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CameraComp;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
@@ -306,15 +334,20 @@ const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ADronePawn_Stat
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_XYSpeed = { "XYSpeed", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADronePawn, XYSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_XYSpeed_MetaData), NewProp_XYSpeed_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_UDSpeed = { "UDSpeed", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADronePawn, UDSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_UDSpeed_MetaData), NewProp_UDSpeed_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_AirFriction = { "AirFriction", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADronePawn, AirFriction), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_AirFriction_MetaData), NewProp_AirFriction_MetaData) };
-const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_Gravity = { "Gravity", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADronePawn, Gravity), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Gravity_MetaData), NewProp_Gravity_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_GravityMin = { "GravityMin", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADronePawn, GravityMin), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GravityMin_MetaData), NewProp_GravityMin_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_GravityMax = { "GravityMax", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADronePawn, GravityMax), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GravityMax_MetaData), NewProp_GravityMax_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_XYFloorSpeed = { "XYFloorSpeed", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADronePawn, XYFloorSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_XYFloorSpeed_MetaData), NewProp_XYFloorSpeed_MetaData) };
 void Z_Construct_UClass_ADronePawn_Statics::NewProp_IsOnFloor_SetBit(void* Obj)
 {
 	((ADronePawn*)Obj)->IsOnFloor = 1;
 }
 const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_IsOnFloor = { "IsOnFloor", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(ADronePawn), &Z_Construct_UClass_ADronePawn_Statics::NewProp_IsOnFloor_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_IsOnFloor_MetaData), NewProp_IsOnFloor_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_RollNum = { "RollNum", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADronePawn, RollNum), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RollNum_MetaData), NewProp_RollNum_MetaData) };
+const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_WingRotation = { "WingRotation", nullptr, (EPropertyFlags)0x0010000000020015, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADronePawn, WingRotation), Z_Construct_UScriptStruct_FRotator, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WingRotation_MetaData), NewProp_WingRotation_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_Collision = { "Collision", nullptr, (EPropertyFlags)0x00100000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADronePawn, Collision), Z_Construct_UClass_UCapsuleComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Collision_MetaData), NewProp_Collision_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_SkeletalMesh = { "SkeletalMesh", nullptr, (EPropertyFlags)0x00100000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADronePawn, SkeletalMesh), Z_Construct_UClass_USkeletalMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SkeletalMesh_MetaData), NewProp_SkeletalMesh_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_FlightComp = { "FlightComp", nullptr, (EPropertyFlags)0x00100000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADronePawn, FlightComp), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_FlightComp_MetaData), NewProp_FlightComp_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_WingLeftComp = { "WingLeftComp", nullptr, (EPropertyFlags)0x00100000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADronePawn, WingLeftComp), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WingLeftComp_MetaData), NewProp_WingLeftComp_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_WingRightComp = { "WingRightComp", nullptr, (EPropertyFlags)0x00100000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADronePawn, WingRightComp), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WingRightComp_MetaData), NewProp_WingRightComp_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_SpringArmComp = { "SpringArmComp", nullptr, (EPropertyFlags)0x00100000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADronePawn, SpringArmComp), Z_Construct_UClass_USpringArmComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SpringArmComp_MetaData), NewProp_SpringArmComp_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ADronePawn_Statics::NewProp_CameraComp = { "CameraComp", nullptr, (EPropertyFlags)0x00100000000a001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADronePawn, CameraComp), Z_Construct_UClass_UCameraComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CameraComp_MetaData), NewProp_CameraComp_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ADronePawn_Statics::PropPointers[] = {
@@ -322,11 +355,16 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ADronePaw
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_XYSpeed,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_UDSpeed,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_AirFriction,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_Gravity,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_GravityMin,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_GravityMax,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_XYFloorSpeed,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_IsOnFloor,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_RollNum,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_WingRotation,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_Collision,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_SkeletalMesh,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_FlightComp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_WingLeftComp,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_WingRightComp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_SpringArmComp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADronePawn_Statics::NewProp_CameraComp,
 };
@@ -371,10 +409,10 @@ ADronePawn::~ADronePawn() {}
 struct Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_DronePawn_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ADronePawn, ADronePawn::StaticClass, TEXT("ADronePawn"), &Z_Registration_Info_UClass_ADronePawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ADronePawn), 515318386U) },
+		{ Z_Construct_UClass_ADronePawn, ADronePawn::StaticClass, TEXT("ADronePawn"), &Z_Registration_Info_UClass_ADronePawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ADronePawn), 1413231016U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_DronePawn_h_2771587440(TEXT("/Script/ObstaclePuzzle"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_DronePawn_h_2489468619(TEXT("/Script/ObstaclePuzzle"),
 	Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_DronePawn_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_DronePawn_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

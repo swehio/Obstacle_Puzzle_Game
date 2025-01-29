@@ -35,6 +35,10 @@ public:
 	float XYFloorSpeed;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
 	bool IsOnFloor;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
+	float RollNum;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
+	float WingRotation;
 
 	UFUNCTION()
 	void MoveXY(const FInputActionValue& value);
@@ -48,13 +52,18 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UCapsuleComponent* Collision;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	USkeletalMeshComponent* SkeletalMesh;
+	UStaticMeshComponent* FlightComp;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UStaticMeshComponent* WingLeftComp;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UStaticMeshComponent* WingRightComp;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USpringArmComponent* SpringArmComp;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UCameraComponent* CameraComp;
 	FHitResult HitResult;
 	float Gravity;
+
 
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
