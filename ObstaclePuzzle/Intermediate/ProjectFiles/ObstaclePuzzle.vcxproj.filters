@@ -48,9 +48,6 @@
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\DronePawn.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\DropingPlatform.cpp">
-      <Filter>Source\ObstaclePuzzle\Private</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\GapPlatform.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
@@ -84,6 +81,9 @@
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\RotatingComponent.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\RotatingPlatform.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
     <Filter Include="Source\ObstaclePuzzle\Public">
       <UniqueIdentifier>{EFD472C4-4274-3716-ABDA-D80622698B31}</UniqueIdentifier>
     </Filter>
@@ -91,9 +91,6 @@
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\DronePawn.h">
-      <Filter>Source\ObstaclePuzzle\Public</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\DropingPlatform.h">
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\GapPlatform.h">
@@ -127,6 +124,9 @@
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\RotatingComponent.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\RotatingPlatform.h">
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
   </ItemGroup>

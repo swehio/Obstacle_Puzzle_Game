@@ -56,7 +56,6 @@ void UMovingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	//}
 	if(FMath::Abs(GetOwner()->GetActorLocation().Y-StartLocation.Y) > MaxRange)
 		MoveSpeed *= -1;
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("%f"), FMath::Abs(GetOwner()->GetActorLocation().Y - StartLocation.Y)));
 	GetOwner()->AddActorWorldOffset(FVector(0, MoveSpeed, 0)*DeltaTime);
 		
 }

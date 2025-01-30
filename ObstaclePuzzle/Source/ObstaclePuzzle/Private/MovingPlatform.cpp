@@ -7,10 +7,18 @@
 AMovingPlatform::AMovingPlatform()
 {
 	PrimaryActorTick.bCanEverTick = true;
-	MovingComp = CreateDefaultSubobject<UMovingComponent>(TEXT("Moving"));
+	//MovingComp = CreateDefaultSubobject<UMovingComponent>(TEXT("Moving"));
+
+	StartLocation = GetOwner()->GetActorLocation();
+	MoveSpeed = 200;
 
 	RepeatCycle = 3;
 	IsVisible = true;
+}
+
+void AMovingPlatform::SetMoveSpeed(float Speed)
+{
+	MoveSpeed = Speed;
 }
 
 void AMovingPlatform::BeginPlay()
@@ -22,6 +30,10 @@ void AMovingPlatform::BeginPlay()
 void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if (FMath::Abs(GetOwner()->GetActorLocation().Y - StartLocation.Y) > MaxRange)
+		MoveSpeed *= -1;
+	GetOwner()->AddActorWorldOffset(FVector(0, MoveSpeed, 0) * DeltaTime);
 }
 
 void AMovingPlatform::SwitchingRedering()
