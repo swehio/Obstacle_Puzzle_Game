@@ -46,8 +46,8 @@ ADronePawn::ADronePawn()
 
 	Sensitivity = 1;
 	XYSpeed = 0;
-	UDSpeed = 5;
-	XYFloorSpeed = 3;
+	UDSpeed = 7;
+	XYFloorSpeed = 5;
 	IsOnFloor = true;
 	AirFriction = 0.4f;
 	GravityMax = -2;

@@ -9,8 +9,9 @@ AMovingPlatform::AMovingPlatform()
 	PrimaryActorTick.bCanEverTick = true;
 	//MovingComp = CreateDefaultSubobject<UMovingComponent>(TEXT("Moving"));
 
-	StartLocation = GetOwner()->GetActorLocation();
+	StartLocation = GetActorLocation();
 	MoveSpeed = 200;
+	MaxRange = 200;
 
 	RepeatCycle = 3;
 	IsVisible = true;
@@ -31,9 +32,9 @@ void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (FMath::Abs(GetOwner()->GetActorLocation().Y - StartLocation.Y) > MaxRange)
+	if (FMath::Abs(GetActorLocation().Y - StartLocation.Y) > MaxRange)
 		MoveSpeed *= -1;
-	GetOwner()->AddActorWorldOffset(FVector(0, MoveSpeed, 0) * DeltaTime);
+	AddActorWorldOffset(FVector(0, MoveSpeed, 0) * DeltaTime);
 }
 
 void AMovingPlatform::SwitchingRedering()
