@@ -44,6 +44,7 @@ protected:
 		int32 OtherBodyIndex) override;
 	virtual void ActivatePlatform(AActor* Activator) override;
 	virtual FName GetPlatformType() const override;
+	void DestroyPlatform();
 
 public:	
 

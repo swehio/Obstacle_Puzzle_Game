@@ -16,13 +16,12 @@ AMovingPlatform::AMovingPlatform()
 void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
-	GetWorld()->GetTimerManager().SetTimer(MovingTimerHandle, this, &AMovingPlatform::SwitchingRedering, RepeatCycle, true);
+	//GetWorld()->GetTimerManager().SetTimer(MovingTimerHandle, this, &AMovingPlatform::SwitchingRedering, RepeatCycle, true);
 }
 
 void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	//GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("Tick")));
 }
 
 void AMovingPlatform::SwitchingRedering()

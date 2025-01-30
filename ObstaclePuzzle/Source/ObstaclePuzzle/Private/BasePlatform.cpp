@@ -26,6 +26,8 @@ ABasePlatform::ABasePlatform()
 void ABasePlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	//AddActorWorldOffset(FVector(-5, 0, 0), true);
 }
 
 void ABasePlatform::OnPlatformOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -48,5 +50,10 @@ void ABasePlatform::ActivatePlatform(AActor* Activator)
 FName ABasePlatform::GetPlatformType() const
 {
 	return FName();
+}
+
+void ABasePlatform::DestroyPlatform()
+{
+	Destroy();
 }
 

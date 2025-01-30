@@ -8,8 +8,8 @@ AOPGPlayerController::AOPGPlayerController() :
 	InputMappingContext(nullptr),
 	MoveXYAction(nullptr),
 	MoveUDAction(nullptr),
-	LookAction(nullptr), 
-	RollAction(nullptr)
+	RollAction(nullptr),
+	LookAction(nullptr)
 {
 }
 

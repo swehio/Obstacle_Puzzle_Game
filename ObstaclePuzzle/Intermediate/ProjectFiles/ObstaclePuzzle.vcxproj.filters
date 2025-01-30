@@ -51,6 +51,9 @@
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\DropingPlatform.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\GapPlatform.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\MovingComponent.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
@@ -67,6 +70,12 @@
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\PlatformInterface.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\PlatformSpawner.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\PlatformSpawnRow.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\PlayerPawn.cpp">
@@ -87,6 +96,9 @@
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\DropingPlatform.h">
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\GapPlatform.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\MovingComponent.h">
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
@@ -103,6 +115,12 @@
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\PlatformInterface.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\PlatformSpawner.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\PlatformSpawnRow.h">
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\PlayerPawn.h">

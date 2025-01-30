@@ -2,7 +2,7 @@
 
 
 #include "DronePawn.h"
-#include "Components/CapsuleComponent.h"
+#include "Components/BoxComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "OPGPlayerController.h"
@@ -13,26 +13,29 @@ ADronePawn::ADronePawn()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-	Collision = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Collision"));
-	Collision->SetCollisionProfileName(TEXT("BlockAll"));
-	Collision->SetCapsuleSize(40.0, 40.0);
-	Collision->SetSimulatePhysics(false);
-	SetRootComponent(Collision);
-
+	BoxCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxCollision"));
+	BoxCollision->SetCollisionProfileName(TEXT("BlockAll"));
+	BoxCollision->SetSimulatePhysics(false);
+	SetRootComponent(BoxCollision);
+	
 	FlightComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FlightMesh"));
 	FlightComp->SetSimulatePhysics(false);
-	FlightComp->SetupAttachment(Collision);
+	FlightComp->SetRelativeScale3D(FVector(0.1));
+	FlightComp->SetRelativeRotation(FRotator(0, 0, -90));
+	FlightComp->SetupAttachment(BoxCollision);
 
 	WingLeftComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WingLeftMesh"));
 	WingLeftComp->SetSimulatePhysics(false);
+	WingLeftComp->SetRelativeLocation(FVector(248, -100, 15));
 	WingLeftComp->SetupAttachment(FlightComp);
 
 	WingRightComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WingRightMesh"));
 	WingRightComp->SetSimulatePhysics(false);
+	WingRightComp->SetRelativeLocation(FVector(-248, -100, 15));
 	WingRightComp->SetupAttachment(FlightComp);
 
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
-	SpringArmComp->SetupAttachment(Collision);
+	SpringArmComp->SetupAttachment(BoxCollision);
 	SpringArmComp->TargetArmLength = 100.0f;
 	SpringArmComp->SetRelativeLocation(FVector(0.0, 0.0, 40.0));
 	SpringArmComp->bUsePawnControlRotation = true;
@@ -43,7 +46,7 @@ ADronePawn::ADronePawn()
 
 	Sensitivity = 1;
 	XYSpeed = 0;
-	UDSpeed = 10;
+	UDSpeed = 5;
 	XYFloorSpeed = 3;
 	IsOnFloor = true;
 	AirFriction = 0.4f;
@@ -51,6 +54,8 @@ ADronePawn::ADronePawn()
 	GravityMin = -1;
 	RollNum = 0;
 	WingRotation = 720;
+	FlightRotationSpeed = 10;
+	StopRoll = 1;
 }
 
 void ADronePawn::Tick(float DeltaTime)
@@ -64,17 +69,18 @@ void ADronePawn::Tick(float DeltaTime)
 	if (IsOnFloor)
 	{
 		Gravity = GravityMin;
+		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("On the floor!")));
 	}
 	else
 	{
 		Gravity = GravityMax;
 		if (RollNum > 0 && RollNum < 90)
 		{
-			AddActorWorldOffset(GetActorRightVector() * (RollNum / 45) * 30 * DeltaTime, true);
+			AddActorWorldOffset(GetActorRightVector() * (RollNum / 45) * 50 * DeltaTime, true);
 		}
 		else if (RollNum > 270 && RollNum < 360)
 		{
-			AddActorWorldOffset(-GetActorRightVector() * ((360 - RollNum) / 45) * 30 *DeltaTime, true);
+			AddActorWorldOffset(-GetActorRightVector() * ((360 - RollNum) / 45) * 50 *DeltaTime, true);
 		}
 
 	}
@@ -151,7 +157,6 @@ void ADronePawn::MoveXY(const FInputActionValue& value)
 
 void ADronePawn::MoveUD(const FInputActionValue& value)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("MoveUpDown")));
 	const float MoveInputUD = value.Get<float>();
 	if (!FMath::IsNearlyZero(MoveInputUD))
 	{
@@ -170,7 +175,6 @@ void ADronePawn::Look(const FInputActionValue& value)
 void ADronePawn::Roll(const FInputActionValue& value)
 {
 	float RollInput = value.Get<float>();
-	float StopRoll = 1;
 	if (!FMath::IsNearlyZero(RollInput) && !IsOnFloor)
 	{
 		if (RollNum > 45 && RollNum < 90 )
@@ -182,6 +186,7 @@ void ADronePawn::Roll(const FInputActionValue& value)
 			StopRoll = RollInput > 0 ? 1 : 0;
 		}
 		AddControllerRollInput(RollInput * StopRoll * Sensitivity);
+		FlightComp->AddRelativeRotation(FRotator(RollInput * StopRoll, 0, 0), true);
 	}
 }
 

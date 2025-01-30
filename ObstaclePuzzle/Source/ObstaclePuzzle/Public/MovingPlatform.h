@@ -17,6 +17,7 @@ public:
 	AMovingPlatform();
 
 protected:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UMovingComponent* MovingComp;
 	FTimerHandle MovingTimerHandle;
 	float RepeatCycle;
