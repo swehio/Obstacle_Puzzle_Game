@@ -16,8 +16,18 @@ class OBSTACLEPUZZLE_API AMovingPlatform : public ABasePlatform
 public:
 	AMovingPlatform();
 
+	UFUNCTION()
+	void SetMoveSpeed(float Speed);
+
 protected:
-	UMovingComponent* MovingComp;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	//UMovingComponent* MovingComp;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	float MoveSpeed;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	float MaxRange;
+
+	FVector StartLocation;
 	FTimerHandle MovingTimerHandle;
 	float RepeatCycle;
 	bool IsVisible;

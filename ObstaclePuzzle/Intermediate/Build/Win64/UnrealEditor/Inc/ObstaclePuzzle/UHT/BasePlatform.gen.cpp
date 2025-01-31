@@ -55,11 +55,22 @@ struct Z_Construct_UClass_ABasePlatform_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/BasePlatform.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_PlatformSpeed_MetaData[] = {
+		{ "Category", "Platform" },
+		{ "ModuleRelativePath", "Public/BasePlatform.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ShouldMovePlatform_MetaData[] = {
+		{ "Category", "Platform" },
+		{ "ModuleRelativePath", "Public/BasePlatform.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FNamePropertyParams NewProp_PlatformType;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Scene;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_StaticMesh;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_BoxCollision;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_PlatformSpeed;
+	static void NewProp_ShouldMovePlatform_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_ShouldMovePlatform;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static const UECodeGen_Private::FImplementedInterfaceParams InterfaceParams[];
@@ -72,11 +83,19 @@ const UECodeGen_Private::FNamePropertyParams Z_Construct_UClass_ABasePlatform_St
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABasePlatform_Statics::NewProp_Scene = { "Scene", nullptr, (EPropertyFlags)0x00200800000a0009, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABasePlatform, Scene), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Scene_MetaData), NewProp_Scene_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABasePlatform_Statics::NewProp_StaticMesh = { "StaticMesh", nullptr, (EPropertyFlags)0x00200800000a0009, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABasePlatform, StaticMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_StaticMesh_MetaData), NewProp_StaticMesh_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ABasePlatform_Statics::NewProp_BoxCollision = { "BoxCollision", nullptr, (EPropertyFlags)0x00200800000a0009, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABasePlatform, BoxCollision), Z_Construct_UClass_UBoxComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BoxCollision_MetaData), NewProp_BoxCollision_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ABasePlatform_Statics::NewProp_PlatformSpeed = { "PlatformSpeed", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ABasePlatform, PlatformSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PlatformSpeed_MetaData), NewProp_PlatformSpeed_MetaData) };
+void Z_Construct_UClass_ABasePlatform_Statics::NewProp_ShouldMovePlatform_SetBit(void* Obj)
+{
+	((ABasePlatform*)Obj)->ShouldMovePlatform = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ABasePlatform_Statics::NewProp_ShouldMovePlatform = { "ShouldMovePlatform", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(ABasePlatform), &Z_Construct_UClass_ABasePlatform_Statics::NewProp_ShouldMovePlatform_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ShouldMovePlatform_MetaData), NewProp_ShouldMovePlatform_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ABasePlatform_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABasePlatform_Statics::NewProp_PlatformType,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABasePlatform_Statics::NewProp_Scene,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABasePlatform_Statics::NewProp_StaticMesh,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABasePlatform_Statics::NewProp_BoxCollision,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABasePlatform_Statics::NewProp_PlatformSpeed,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ABasePlatform_Statics::NewProp_ShouldMovePlatform,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ABasePlatform_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_ABasePlatform_Statics::DependentSingletons[])() = {
@@ -122,10 +141,10 @@ ABasePlatform::~ABasePlatform() {}
 struct Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_BasePlatform_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ABasePlatform, ABasePlatform::StaticClass, TEXT("ABasePlatform"), &Z_Registration_Info_UClass_ABasePlatform, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABasePlatform), 1944042962U) },
+		{ Z_Construct_UClass_ABasePlatform, ABasePlatform::StaticClass, TEXT("ABasePlatform"), &Z_Registration_Info_UClass_ABasePlatform, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABasePlatform), 926649714U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_BasePlatform_h_3945643280(TEXT("/Script/ObstaclePuzzle"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_BasePlatform_h_2752741376(TEXT("/Script/ObstaclePuzzle"),
 	Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_BasePlatform_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_BasePlatform_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

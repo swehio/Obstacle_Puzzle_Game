@@ -6,7 +6,7 @@
 #include "GameFramework/Pawn.h"
 #include "DronePawn.generated.h"
 
-class UCapsuleComponent;
+class UBoxComponent;
 class USpringArmComponent;
 class UCameraComponent;
 struct FInputActionValue;
@@ -19,6 +19,9 @@ class OBSTACLEPUZZLE_API ADronePawn : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ADronePawn();
+
+	void GameOver();
+protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MoveSetting")
 	float Sensitivity;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MoveSetting")
@@ -35,6 +38,14 @@ public:
 	float XYFloorSpeed;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
 	bool IsOnFloor;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
+	float RollNum;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
+	float WingRotation;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
+	float FlightRotationSpeed;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
+	float StopRoll;
 
 	UFUNCTION()
 	void MoveXY(const FInputActionValue& value);
@@ -46,9 +57,13 @@ public:
 	void Roll(const FInputActionValue& value);
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	UCapsuleComponent* Collision;
+	UBoxComponent* BoxCollision;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	USkeletalMeshComponent* SkeletalMesh;
+	UStaticMeshComponent* FlightComp;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UStaticMeshComponent* WingLeftComp;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UStaticMeshComponent* WingRightComp;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	USpringArmComponent* SpringArmComp;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
@@ -56,6 +71,9 @@ public:
 	FHitResult HitResult;
 	float Gravity;
 
+	void RotateWings(float DeltaTime);
+
+	virtual void  EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 

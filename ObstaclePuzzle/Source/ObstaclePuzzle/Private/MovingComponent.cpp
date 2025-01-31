@@ -7,13 +7,12 @@ UMovingComponent::UMovingComponent()
 
 	StartLocation = FVector(0, 0, 0);
 	MoveDist = 0.0f;
-	MoveSpeed = 1.0f;
+	MoveSpeed = 500.0f;
 	MaxRange = 50.0f;
 	addSpeed = 1.0f;
 	MoveX = true;
 	MoveY = false;
 	MoveZ = false;
-
 }
 
 
@@ -29,34 +28,35 @@ void UMovingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	if (MoveX == true || MoveY == true || MoveZ == true)
-	{
-		MoveDist += MoveSpeed;
+	//if (MoveX == true || MoveY == true || MoveZ == true)
+	//{
+	//	MoveDist += MoveSpeed;
 
-		if (MoveDist < -MaxRange)
-		{
-			MoveSpeed = 1.0f;
-		}
-		else if (MoveDist > MaxRange)
-		{
-			MoveSpeed = -1.0f;
-		}
+	//	if (MoveDist < -MaxRange)
+	//	{
+	//		MoveSpeed = 1.0f;
+	//	}
+	//	else if (MoveDist > MaxRange)
+	//	{
+	//		MoveSpeed = -1.0f;
+	//	}
 
-		if (MoveX == true)
-		{
-			GetOwner()->SetActorLocation(StartLocation+FVector(MoveDist, 0, 0));
-		}
-		else if (MoveY == true)
-		{
-			GetOwner()->SetActorLocation(StartLocation + FVector(0, MoveDist, 0));
-		}
-		else if (MoveZ == true)
-		{
-			GetOwner()->SetActorLocation(StartLocation + FVector(0, 0, MoveDist));
-		}
-	}
-
-
+	//	if (MoveX == true)
+	//	{
+	//		GetOwner()->SetActorLocation(StartLocation+FVector(MoveDist, 0, 0));
+	//	}
+	//	else if (MoveY == true)
+	//	{
+	//		GetOwner()->SetActorLocation(StartLocation + FVector(0, MoveDist, 0));
+	//	}
+	//	else if (MoveZ == true)
+	//	{
+	//		GetOwner()->SetActorLocation(StartLocation + FVector(0, 0, MoveDist));
+	//	}
+	//}
+	if(FMath::Abs(GetOwner()->GetActorLocation().Y-StartLocation.Y) > MaxRange)
+		MoveSpeed *= -1;
+	GetOwner()->AddActorWorldOffset(FVector(0, MoveSpeed, 0)*DeltaTime);
 		
 }
 

@@ -45,10 +45,13 @@
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\BasePlatform.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\DestroyActor.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\DronePawn.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\DropingPlatform.cpp">
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\GapPlatform.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\MovingComponent.cpp">
@@ -69,10 +72,19 @@
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\PlatformInterface.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\PlatformSpawner.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\PlatformSpawnRow.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\PlayerPawn.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\RotatingComponent.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\RotatingPlatform.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
     <Filter Include="Source\ObstaclePuzzle\Public">
@@ -81,10 +93,13 @@
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\BasePlatform.h">
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\DestroyActor.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\DronePawn.h">
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\DropingPlatform.h">
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\GapPlatform.h">
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\MovingComponent.h">
@@ -105,10 +120,19 @@
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\PlatformInterface.h">
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\PlatformSpawner.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\PlatformSpawnRow.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\PlayerPawn.h">
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\RotatingComponent.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\RotatingPlatform.h">
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
   </ItemGroup>
