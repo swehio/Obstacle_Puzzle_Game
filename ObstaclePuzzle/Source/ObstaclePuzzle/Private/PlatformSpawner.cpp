@@ -23,8 +23,8 @@ APlatformSpawner::APlatformSpawner()
 AActor* APlatformSpawner::SpawnActor(TSubclassOf<AActor> PlatformClass)
 {
 	if (!PlatformClass) return nullptr;
-
-	 AActor* SpawnedActor = GetWorld()->SpawnActor<AActor>(PlatformClass, GetActorLocation(), FRotator::ZeroRotator);
+	float RandomNum = FMath::RandRange(0, 180);
+	AActor* SpawnedActor = GetWorld()->SpawnActor<AActor>(PlatformClass, GetActorLocation()+FVector(0, 0, RandomNum), FRotator(0, 0, RandomNum));
 
 	 return SpawnedActor;
 }

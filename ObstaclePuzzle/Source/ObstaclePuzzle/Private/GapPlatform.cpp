@@ -6,11 +6,6 @@
 
 AGapPlatform::AGapPlatform()
 {
-	SetRootComponent(Scene);
-	BoxCollision->SetupAttachment(Scene);
-	StaticMesh->SetupAttachment(BoxCollision);
-	StaticMesh2 = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh2"));
-	StaticMesh2->SetupAttachment(BoxCollision);
 }
 
 

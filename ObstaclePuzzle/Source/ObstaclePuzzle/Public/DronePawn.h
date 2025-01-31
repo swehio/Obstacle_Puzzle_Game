@@ -19,6 +19,8 @@ class OBSTACLEPUZZLE_API ADronePawn : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ADronePawn();
+
+	void GameOver();
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MoveSetting")
 	float Sensitivity;
@@ -69,7 +71,9 @@ protected:
 	FHitResult HitResult;
 	float Gravity;
 
+	void RotateWings(float DeltaTime);
 
+	virtual void  EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 

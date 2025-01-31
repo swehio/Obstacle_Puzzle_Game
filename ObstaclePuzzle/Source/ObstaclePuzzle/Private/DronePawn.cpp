@@ -46,16 +46,27 @@ ADronePawn::ADronePawn()
 
 	Sensitivity = 1;
 	XYSpeed = 0;
-	UDSpeed = 7;
+	UDSpeed = 4;
 	XYFloorSpeed = 5;
 	IsOnFloor = true;
 	AirFriction = 0.4f;
-	GravityMax = -2;
+	GravityMax = -5;
 	GravityMin = -1;
 	RollNum = 0;
 	WingRotation = 720;
 	FlightRotationSpeed = 10;
 	StopRoll = 1;
+}
+
+void ADronePawn::GameOver()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("GameOver")));
+}
+
+void ADronePawn::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	GameOver();
+	Super::EndPlay(EndPlayReason);
 }
 
 void ADronePawn::Tick(float DeltaTime)
@@ -76,15 +87,20 @@ void ADronePawn::Tick(float DeltaTime)
 		Gravity = GravityMax;
 		if (RollNum > 0 && RollNum < 90)
 		{
-			AddActorWorldOffset(GetActorRightVector() * (RollNum / 45) * 50 * DeltaTime, true);
+			AddActorWorldOffset(GetActorRightVector() * (RollNum / 45) * 20 * DeltaTime, true);
 		}
 		else if (RollNum > 270 && RollNum < 360)
 		{
-			AddActorWorldOffset(-GetActorRightVector() * ((360 - RollNum) / 45) * 50 *DeltaTime, true);
+			AddActorWorldOffset(-GetActorRightVector() * ((360 - RollNum) / 45) * 20 *DeltaTime, true);
 		}
 
 	}
 
+	//RotateWings(DeltaTime);
+}
+
+void ADronePawn::RotateWings(float DeltaTime)
+{
 	WingLeftComp->AddLocalRotation(FRotator(0, WingRotation * DeltaTime, 0));
 	WingRightComp->AddLocalRotation(FRotator(0, WingRotation * DeltaTime, 0));
 }
@@ -177,15 +193,8 @@ void ADronePawn::Roll(const FInputActionValue& value)
 	float RollInput = value.Get<float>();
 	if (!FMath::IsNearlyZero(RollInput) && !IsOnFloor)
 	{
-		if (RollNum > 45 && RollNum < 90 )
-		{
-			StopRoll = RollInput > 0 ? 0 : 1;
-		}
-		else if (RollNum >270 && RollNum < 315)
-		{
-			StopRoll = RollInput > 0 ? 1 : 0;
-		}
-		AddControllerRollInput(RollInput * StopRoll * Sensitivity);
+
+		AddControllerRollInput(RollInput * Sensitivity);
 		FlightComp->AddRelativeRotation(FRotator(RollInput * StopRoll, 0, 0), true);
 	}
 }
