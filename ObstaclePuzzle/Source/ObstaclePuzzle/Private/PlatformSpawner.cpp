@@ -17,6 +17,7 @@ APlatformSpawner::APlatformSpawner()
 	SpawnVolume->SetupAttachment(RootComponent);
 
 	PlatformDataTable = nullptr;
+	SpawnRepeatTime = 5.0f;
 
 }
 
@@ -84,7 +85,7 @@ void APlatformSpawner::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	GetWorldTimerManager().SetTimer(SpawnTimerHandle, this, &APlatformSpawner::VoidSpawnRandomPlatform, 3.0f, true);
+	GetWorldTimerManager().SetTimer(SpawnTimerHandle, this, &APlatformSpawner::VoidSpawnRandomPlatform, SpawnRepeatTime, true, 0.0f);
 }
 
 // Called every frame

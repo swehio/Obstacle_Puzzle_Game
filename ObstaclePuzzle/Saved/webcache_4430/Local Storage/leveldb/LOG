@@ -1,2 +1,3 @@
-2025/01/31-19:30:51.557 187c Creating DB D:/Git/Obstacle_Puzzle_Game/ObstaclePuzzle/Saved/webcache_4430\Local Storage\leveldb since it was missing.
-2025/01/31-19:30:51.884 187c Reusing MANIFEST D:/Git/Obstacle_Puzzle_Game/ObstaclePuzzle/Saved/webcache_4430\Local Storage\leveldb/MANIFEST-000001
+2025/02/02-22:26:07.401 3078 Reusing MANIFEST D:/Git/Obstacle_Puzzle_Game/ObstaclePuzzle/Saved/webcache_4430\Local Storage\leveldb/MANIFEST-000001
+2025/02/02-22:26:07.445 3078 Recovering log #3
+2025/02/02-22:26:07.450 3078 Reusing old log D:/Git/Obstacle_Puzzle_Game/ObstaclePuzzle/Saved/webcache_4430\Local Storage\leveldb/000003.log 

@@ -23,7 +23,7 @@ ABasePlatform::ABasePlatform()
 
 	StaticMesh->OnComponentBeginOverlap.AddDynamic(this, &ABasePlatform::OnPlatformOverlap);
 
-	PlatformSpeed = 3;
+	PlatformSpeed = 4;
 	ShouldMovePlatform = true;
 
 }
@@ -32,7 +32,7 @@ void ABasePlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if(ShouldMovePlatform) AddActorWorldOffset(FVector(-PlatformSpeed, 0, 0), true);
+	if(ShouldMovePlatform) AddActorWorldOffset(FVector(-PlatformSpeed, 0, 0)*DeltaTime, true);
 }
 
 void ABasePlatform::OnPlatformOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -41,7 +41,6 @@ void ABasePlatform::OnPlatformOverlap(UPrimitiveComponent* OverlappedComp, AActo
 	{
 		Cast<ADronePawn>(OtherActor)->Destroy();
 	}
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("%s"), *OtherComp->GetName()));
 }
 
 void ABasePlatform::OnPlatformEndOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)

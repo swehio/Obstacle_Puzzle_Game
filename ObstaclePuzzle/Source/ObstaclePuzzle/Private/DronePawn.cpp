@@ -47,7 +47,7 @@ ADronePawn::ADronePawn()
 	Sensitivity = 1;
 	XYSpeed = 0;
 	UDSpeed = 4;
-	XYFloorSpeed = 5;
+	XYFloorSpeed = 8;
 	IsOnFloor = true;
 	AirFriction = 0.4f;
 	GravityMax = -5;
@@ -96,7 +96,7 @@ void ADronePawn::Tick(float DeltaTime)
 
 	}
 
-	//RotateWings(DeltaTime);
+	RotateWings(DeltaTime);
 }
 
 void ADronePawn::RotateWings(float DeltaTime)
@@ -193,7 +193,6 @@ void ADronePawn::Roll(const FInputActionValue& value)
 	float RollInput = value.Get<float>();
 	if (!FMath::IsNearlyZero(RollInput) && !IsOnFloor)
 	{
-
 		AddControllerRollInput(RollInput * Sensitivity);
 		FlightComp->AddRelativeRotation(FRotator(RollInput * StopRoll, 0, 0), true);
 	}
