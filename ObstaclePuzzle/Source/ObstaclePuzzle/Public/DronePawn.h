@@ -39,13 +39,13 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
 	bool IsOnFloor;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
-	float RollNum;
+	FRotator FlightRotation;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
+	FRotator FlightStartRotation;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
 	float WingRotation;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
 	float FlightRotationSpeed;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
-	float StopRoll;
 
 	UFUNCTION()
 	void MoveXY(const FInputActionValue& value);

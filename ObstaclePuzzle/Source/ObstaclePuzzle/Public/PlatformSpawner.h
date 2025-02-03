@@ -32,6 +32,8 @@ protected:
 	FTimerHandle SpawnTimerHandle;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
 	float SpawnRepeatTime;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
+	float PlatformSpeed;
 
 	struct FPlatformSpawnRow* GetRandomPlatform() const;
 

@@ -10,31 +10,23 @@ AMovingPlatform::AMovingPlatform()
 	//MovingComp = CreateDefaultSubobject<UMovingComponent>(TEXT("Moving"));
 
 	StartLocation = GetActorLocation();
-	MoveSpeed = 200;
+	ActivateAttribute = 200;
 	MaxRange = 200;
 
 	RepeatCycle = 3;
 	IsVisible = true;
 }
 
-void AMovingPlatform::SetMoveSpeed(float Speed)
+void AMovingPlatform::ActivatePlatform(float DeltaTime)
 {
-	MoveSpeed = Speed;
-}
-
-void AMovingPlatform::BeginPlay()
-{
-	Super::BeginPlay();
-	//GetWorld()->GetTimerManager().SetTimer(MovingTimerHandle, this, &AMovingPlatform::SwitchingRedering, RepeatCycle, true);
-}
-
-void AMovingPlatform::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
 	if (FMath::Abs(GetActorLocation().Y - StartLocation.Y) > MaxRange)
-		MoveSpeed *= -1;
-	AddActorWorldOffset(FVector(0, MoveSpeed, 0) * DeltaTime);
+		ActivateAttribute *= -1;
+	AddActorWorldOffset(FVector(0, ActivateAttribute, 0) * DeltaTime);
+}
+
+void AMovingPlatform::SetActivateAttribute(float Attribute)
+{
+	this->ActivateAttribute = Attribute;
 }
 
 void AMovingPlatform::SwitchingRedering()

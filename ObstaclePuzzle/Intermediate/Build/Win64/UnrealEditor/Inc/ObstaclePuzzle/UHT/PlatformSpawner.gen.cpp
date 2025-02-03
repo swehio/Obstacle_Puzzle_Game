@@ -180,10 +180,15 @@ struct Z_Construct_UClass_APlatformSpawner_Statics
 		{ "Category", "Spawning" },
 		{ "ModuleRelativePath", "Public/PlatformSpawner.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_PlatformSpeed_MetaData[] = {
+		{ "Category", "Spawning" },
+		{ "ModuleRelativePath", "Public/PlatformSpawner.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SpawnVolume;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_PlatformDataTable;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_SpawnRepeatTime;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_PlatformSpeed;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
@@ -200,10 +205,12 @@ struct Z_Construct_UClass_APlatformSpawner_Statics
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlatformSpawner_Statics::NewProp_SpawnVolume = { "SpawnVolume", nullptr, (EPropertyFlags)0x002008000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlatformSpawner, SpawnVolume), Z_Construct_UClass_USphereComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SpawnVolume_MetaData), NewProp_SpawnVolume_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlatformSpawner_Statics::NewProp_PlatformDataTable = { "PlatformDataTable", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlatformSpawner, PlatformDataTable), Z_Construct_UClass_UDataTable_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PlatformDataTable_MetaData), NewProp_PlatformDataTable_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_APlatformSpawner_Statics::NewProp_SpawnRepeatTime = { "SpawnRepeatTime", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlatformSpawner, SpawnRepeatTime), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SpawnRepeatTime_MetaData), NewProp_SpawnRepeatTime_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_APlatformSpawner_Statics::NewProp_PlatformSpeed = { "PlatformSpeed", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlatformSpawner, PlatformSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PlatformSpeed_MetaData), NewProp_PlatformSpeed_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APlatformSpawner_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlatformSpawner_Statics::NewProp_SpawnVolume,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlatformSpawner_Statics::NewProp_PlatformDataTable,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlatformSpawner_Statics::NewProp_SpawnRepeatTime,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlatformSpawner_Statics::NewProp_PlatformSpeed,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_APlatformSpawner_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_APlatformSpawner_Statics::DependentSingletons[])() = {
@@ -246,10 +253,10 @@ APlatformSpawner::~APlatformSpawner() {}
 struct Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformSpawner_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_APlatformSpawner, APlatformSpawner::StaticClass, TEXT("APlatformSpawner"), &Z_Registration_Info_UClass_APlatformSpawner, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlatformSpawner), 1375408855U) },
+		{ Z_Construct_UClass_APlatformSpawner, APlatformSpawner::StaticClass, TEXT("APlatformSpawner"), &Z_Registration_Info_UClass_APlatformSpawner, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlatformSpawner), 3865199519U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformSpawner_h_3900381443(TEXT("/Script/ObstaclePuzzle"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformSpawner_h_3535258620(TEXT("/Script/ObstaclePuzzle"),
 	Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformSpawner_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformSpawner_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

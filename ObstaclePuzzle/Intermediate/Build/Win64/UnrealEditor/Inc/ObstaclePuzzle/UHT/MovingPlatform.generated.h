@@ -15,7 +15,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define OBSTACLEPUZZLE_MovingPlatform_generated_h
 
 #define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_MovingPlatform_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
-	DECLARE_FUNCTION(execSetMoveSpeed);
+	DECLARE_FUNCTION(execSetActivateAttribute);
 
 
 #define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_MovingPlatform_h_14_INCLASS_NO_PURE_DECLS \

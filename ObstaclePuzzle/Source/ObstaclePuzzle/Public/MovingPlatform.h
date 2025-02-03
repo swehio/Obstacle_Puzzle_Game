@@ -17,14 +17,14 @@ public:
 	AMovingPlatform();
 
 	UFUNCTION()
-	void SetMoveSpeed(float Speed);
+	virtual void SetActivateAttribute(float Attribute) override;
 
 protected:
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	//UMovingComponent* MovingComp;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	float MoveSpeed;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Attribute")
+	float ActivateAttribute;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Attribute")
 	float MaxRange;
 
 	FVector StartLocation;
@@ -32,8 +32,7 @@ protected:
 	float RepeatCycle;
 	bool IsVisible;
 
-	virtual void BeginPlay() override;
-	virtual void Tick(float DeltaTime) override;
+	virtual void ActivatePlatform(float DeltaTime);
 	void SwitchingRedering();
 	
 };

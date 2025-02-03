@@ -20,13 +20,8 @@ class OBSTACLEPUZZLE_API IPlatformInterface
 public:
 	UFUNCTION()
 	virtual void OnPlatformOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) = 0;
-	UFUNCTION()
-	virtual void OnPlatformEndOverlap(
-		UPrimitiveComponent* OverlappedComp,
-		AActor* OtherActor,
-		UPrimitiveComponent* OtherComp,
-		int32 OtherBodyIndex) = 0;
-	virtual void ActivatePlatform(AActor* Activator) = 0;
+	virtual void ActivatePlatform(float DeltaTime) = 0;
+	virtual void SetActivateAttribute(float Attribute) = 0;
 	virtual FName GetPlatformType() const = 0;
 
 	
