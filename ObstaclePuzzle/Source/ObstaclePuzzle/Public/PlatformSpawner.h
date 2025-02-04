@@ -30,6 +30,10 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite , Category = "Spawning")
 	UDataTable*  PlatformDataTable;
 	FTimerHandle SpawnTimerHandle;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
+	float SpawnRepeatTime;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
+	float PlatformSpeed;
 
 	struct FPlatformSpawnRow* GetRandomPlatform() const;
 

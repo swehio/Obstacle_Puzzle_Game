@@ -10,5 +10,15 @@ UCLASS()
 class OBSTACLEPUZZLE_API ARotatingPlatform : public ABasePlatform
 {
 	GENERATED_BODY()
+
+public:
+	void ARotationgPlatform();
+	virtual void SetActivateAttribute(float Attribute) override;
+
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attribute")
+	float ActivateAttribute;
+	virtual void ActivatePlatform(float DeltaTime) override;
+	
 	
 };

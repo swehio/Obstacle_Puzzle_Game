@@ -19,6 +19,9 @@ public:
 	// Sets default values for this actor's properties
 	ABasePlatform();
 
+	void SetPlatformSpeed(float Speed);
+	virtual void SetActivateAttribute(float ActivateAttribute) override;
+
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Platform")
 	FName PlatformType;
@@ -36,13 +39,14 @@ protected:
 
 
 	virtual void Tick(float DeltaTime);
-	virtual void OnPlatformOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) override;
-	virtual void OnPlatformEndOverlap(
-		UPrimitiveComponent* OverlappedComp,
-		AActor* OtherActor,
-		UPrimitiveComponent* OtherComp,
-		int32 OtherBodyIndex) override;
-	virtual void ActivatePlatform(AActor* Activator) override;
+	virtual void OnPlatformOverlap(UPrimitiveComponent* OverlappedComp, 
+		AActor* OtherActor, 
+		UPrimitiveComponent* OtherComp, 
+		int32 OtherBodyIndex, 
+		bool bFromSweep, 
+		const FHitResult& SweepResult) override;
+	virtual void ActivatePlatform(float DeltaTime) override;
+
 	virtual FName GetPlatformType() const override;
 	void DestroyPlatform();
 

@@ -17,7 +17,4 @@ class OBSTACLEPUZZLE_API AGapPlatform : public ABasePlatform
 public:
 	AGapPlatform();
 
-	UPROPERTY(VisibleAnywhere)
-	UStaticMeshComponent* StaticMesh2;
-
 };

@@ -20,69 +20,6 @@ OBSTACLEPUZZLE_API UClass* Z_Construct_UClass_UPlatformInterface_NoRegister();
 UPackage* Z_Construct_UPackage__Script_ObstaclePuzzle();
 // End Cross Module References
 
-// Begin Interface UPlatformInterface Function OnPlatformEndOverlap
-struct Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics
-{
-	struct PlatformInterface_eventOnPlatformEndOverlap_Parms
-	{
-		UPrimitiveComponent* OverlappedComp;
-		AActor* OtherActor;
-		UPrimitiveComponent* OtherComp;
-		int32 OtherBodyIndex;
-	};
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "Public/PlatformInterface.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OverlappedComp_MetaData[] = {
-		{ "EditInline", "true" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OtherComp_MetaData[] = {
-		{ "EditInline", "true" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_OverlappedComp;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherActor;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_OtherComp;
-	static const UECodeGen_Private::FIntPropertyParams NewProp_OtherBodyIndex;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::NewProp_OverlappedComp = { "OverlappedComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(PlatformInterface_eventOnPlatformEndOverlap_Parms, OverlappedComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OverlappedComp_MetaData), NewProp_OverlappedComp_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::NewProp_OtherActor = { "OtherActor", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(PlatformInterface_eventOnPlatformEndOverlap_Parms, OtherActor), Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::NewProp_OtherComp = { "OtherComp", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(PlatformInterface_eventOnPlatformEndOverlap_Parms, OtherComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OtherComp_MetaData), NewProp_OtherComp_MetaData) };
-const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::NewProp_OtherBodyIndex = { "OtherBodyIndex", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(PlatformInterface_eventOnPlatformEndOverlap_Parms, OtherBodyIndex), METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::NewProp_OverlappedComp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::NewProp_OtherActor,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::NewProp_OtherComp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::NewProp_OtherBodyIndex,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UPlatformInterface, nullptr, "OnPlatformEndOverlap", nullptr, nullptr, Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::PropPointers), sizeof(Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::PlatformInterface_eventOnPlatformEndOverlap_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020400, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::Function_MetaDataParams), Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::PlatformInterface_eventOnPlatformEndOverlap_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(IPlatformInterface::execOnPlatformEndOverlap)
-{
-	P_GET_OBJECT(UPrimitiveComponent,Z_Param_OverlappedComp);
-	P_GET_OBJECT(AActor,Z_Param_OtherActor);
-	P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComp);
-	P_GET_PROPERTY(FIntProperty,Z_Param_OtherBodyIndex);
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->OnPlatformEndOverlap(Z_Param_OverlappedComp,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_OtherBodyIndex);
-	P_NATIVE_END;
-}
-// End Interface UPlatformInterface Function OnPlatformEndOverlap
-
 // Begin Interface UPlatformInterface Function OnPlatformOverlap
 struct Z_Construct_UFunction_UPlatformInterface_OnPlatformOverlap_Statics
 {
@@ -169,7 +106,6 @@ void UPlatformInterface::StaticRegisterNativesUPlatformInterface()
 {
 	UClass* Class = UPlatformInterface::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
-		{ "OnPlatformEndOverlap", &IPlatformInterface::execOnPlatformEndOverlap },
 		{ "OnPlatformOverlap", &IPlatformInterface::execOnPlatformOverlap },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -188,7 +124,6 @@ struct Z_Construct_UClass_UPlatformInterface_Statics
 #endif // WITH_METADATA
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UPlatformInterface_OnPlatformEndOverlap, "OnPlatformEndOverlap" }, // 779899878
 		{ &Z_Construct_UFunction_UPlatformInterface_OnPlatformOverlap, "OnPlatformOverlap" }, // 1177439998
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -238,10 +173,10 @@ UPlatformInterface::~UPlatformInterface() {}
 struct Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformInterface_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UPlatformInterface, UPlatformInterface::StaticClass, TEXT("UPlatformInterface"), &Z_Registration_Info_UClass_UPlatformInterface, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UPlatformInterface), 45622544U) },
+		{ Z_Construct_UClass_UPlatformInterface, UPlatformInterface::StaticClass, TEXT("UPlatformInterface"), &Z_Registration_Info_UClass_UPlatformInterface, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UPlatformInterface), 873868734U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformInterface_h_1932984230(TEXT("/Script/ObstaclePuzzle"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformInterface_h_2270964697(TEXT("/Script/ObstaclePuzzle"),
 	Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformInterface_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformInterface_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

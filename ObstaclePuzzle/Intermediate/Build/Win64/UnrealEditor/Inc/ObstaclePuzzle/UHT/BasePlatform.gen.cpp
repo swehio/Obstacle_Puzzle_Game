@@ -104,7 +104,7 @@ UObject* (*const Z_Construct_UClass_ABasePlatform_Statics::DependentSingletons[]
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ABasePlatform_Statics::DependentSingletons) < 16);
 const UECodeGen_Private::FImplementedInterfaceParams Z_Construct_UClass_ABasePlatform_Statics::InterfaceParams[] = {
-	{ Z_Construct_UClass_UPlatformInterface_NoRegister, (int32)VTABLE_OFFSET(ABasePlatform, IPlatformInterface), false },  // 45622544
+	{ Z_Construct_UClass_UPlatformInterface_NoRegister, (int32)VTABLE_OFFSET(ABasePlatform, IPlatformInterface), false },  // 873868734
 };
 const UECodeGen_Private::FClassParams Z_Construct_UClass_ABasePlatform_Statics::ClassParams = {
 	&ABasePlatform::StaticClass,
@@ -141,10 +141,10 @@ ABasePlatform::~ABasePlatform() {}
 struct Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_BasePlatform_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ABasePlatform, ABasePlatform::StaticClass, TEXT("ABasePlatform"), &Z_Registration_Info_UClass_ABasePlatform, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABasePlatform), 926649714U) },
+		{ Z_Construct_UClass_ABasePlatform, ABasePlatform::StaticClass, TEXT("ABasePlatform"), &Z_Registration_Info_UClass_ABasePlatform, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ABasePlatform), 1732704068U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_BasePlatform_h_2752741376(TEXT("/Script/ObstaclePuzzle"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_BasePlatform_h_4194180949(TEXT("/Script/ObstaclePuzzle"),
 	Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_BasePlatform_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_BasePlatform_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

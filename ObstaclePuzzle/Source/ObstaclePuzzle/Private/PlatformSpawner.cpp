@@ -17,16 +17,20 @@ APlatformSpawner::APlatformSpawner()
 	SpawnVolume->SetupAttachment(RootComponent);
 
 	PlatformDataTable = nullptr;
+	SpawnRepeatTime = 5.0f;
+	PlatformSpeed = 400;
 
 }
 
 AActor* APlatformSpawner::SpawnActor(TSubclassOf<AActor> PlatformClass)
 {
 	if (!PlatformClass) return nullptr;
-	float RandomNum = FMath::RandRange(0, 180);
+	float RandomNum = FMath::RandRange(0, 45);
+	float RandomAttribute = FMath::RandRange(0, 150);
 	AActor* SpawnedActor = GetWorld()->SpawnActor<AActor>(PlatformClass, GetActorLocation()+FVector(0, 0, RandomNum), FRotator(0, 0, RandomNum));
-
-	 return SpawnedActor;
+	Cast<ABasePlatform>(SpawnedActor)->SetPlatformSpeed(PlatformSpeed);
+	Cast<ABasePlatform>(SpawnedActor)->SetActivateAttribute(RandomAttribute);
+	return SpawnedActor;
 }
 
 AActor* APlatformSpawner::SpawnRandomPlatform()
@@ -84,7 +88,7 @@ void APlatformSpawner::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	GetWorldTimerManager().SetTimer(SpawnTimerHandle, this, &APlatformSpawner::VoidSpawnRandomPlatform, 3.0f, true);
+	GetWorldTimerManager().SetTimer(SpawnTimerHandle, this, &APlatformSpawner::VoidSpawnRandomPlatform, SpawnRepeatTime, true, 0.0f);
 }
 
 // Called every frame
