@@ -25,7 +25,7 @@ APlatformSpawner::APlatformSpawner()
 AActor* APlatformSpawner::SpawnActor(TSubclassOf<AActor> PlatformClass)
 {
 	if (!PlatformClass) return nullptr;
-	float RandomNum = FMath::RandRange(0, 180);
+	float RandomNum = FMath::RandRange(0, 45);
 	float RandomAttribute = FMath::RandRange(0, 150);
 	AActor* SpawnedActor = GetWorld()->SpawnActor<AActor>(PlatformClass, GetActorLocation()+FVector(0, 0, RandomNum), FRotator(0, 0, RandomNum));
 	Cast<ABasePlatform>(SpawnedActor)->SetPlatformSpeed(PlatformSpeed);

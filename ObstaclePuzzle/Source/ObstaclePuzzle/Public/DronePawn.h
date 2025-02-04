@@ -22,30 +22,28 @@ public:
 
 	void GameOver();
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MoveSetting")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Look")
 	float Sensitivity;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MoveSetting")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Move")
 	float XYSpeed;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MoveSetting")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Move")
 	float UDSpeed;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MoveSetting")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Move")
 	float AirFriction;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MoveSetting")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Setting|Move")
 	float GravityMin;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MoveSetting")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Move")
 	float GravityMax;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MoveSetting")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Move")
 	float XYFloorSpeed;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Setting|Move")
 	bool IsOnFloor;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting|Move")
 	FRotator FlightRotation;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting|Move")
 	FRotator FlightStartRotation;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MoveSetting")
 	float WingRotation;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting")
-	float FlightRotationSpeed;
 
 	UFUNCTION()
 	void MoveXY(const FInputActionValue& value);
@@ -68,13 +66,14 @@ protected:
 	USpringArmComponent* SpringArmComp;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UCameraComponent* CameraComp;
+
 	FHitResult HitResult;
 	float Gravity;
 
 	void RotateWings(float DeltaTime);
 
 	virtual void  EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 };
