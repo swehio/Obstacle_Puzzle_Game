@@ -9,6 +9,7 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class AActor;
 struct FInputActionValue;
 #ifdef OBSTACLEPUZZLE_DronePawn_generated_h
 #error "DronePawn.generated.h already included, missing '#pragma once' in DronePawn.h"
@@ -19,7 +20,11 @@ struct FInputActionValue;
 	DECLARE_FUNCTION(execRoll); \
 	DECLARE_FUNCTION(execLook); \
 	DECLARE_FUNCTION(execMoveUD); \
-	DECLARE_FUNCTION(execMoveXY);
+	DECLARE_FUNCTION(execMoveXY); \
+	DECLARE_FUNCTION(execTakeDamage); \
+	DECLARE_FUNCTION(execOperateHealth); \
+	DECLARE_FUNCTION(execGetHealth); \
+	DECLARE_FUNCTION(execGameOver);
 
 
 #define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_DronePawn_h_17_INCLASS_NO_PURE_DECLS \

@@ -17,4 +17,10 @@ class OBSTACLEPUZZLE_API AGapPlatform : public ABasePlatform
 public:
 	AGapPlatform();
 
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Platform")
+	float GapDamage;
+
+	virtual float GetDamage() override;
+
 };

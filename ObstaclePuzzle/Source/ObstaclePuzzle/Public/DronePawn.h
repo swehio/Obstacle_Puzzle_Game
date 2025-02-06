@@ -20,8 +20,30 @@ public:
 	// Sets default values for this pawn's properties
 	ADronePawn();
 
+	UFUNCTION(BlueprintCallable, Category = "Game")
 	void GameOver();
+
+	UFUNCTION(BlueprintPure, Category = "Health")
+	float GetHealth() const;
+	UFUNCTION(BlueprintCallable, Category = "Health")
+	void OperateHealth(float Amount, bool bIsPlus);
+	UFUNCTION(BlueprintCallable, Category = "Health")
+	float TakeDamage(float DamageAmount, AActor* DmageCauser);
+
 protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UBoxComponent* BoxCollision;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UStaticMeshComponent* FlightComp;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UStaticMeshComponent* WingLeftComp;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UStaticMeshComponent* WingRightComp;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	USpringArmComponent* SpringArmComp;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UCameraComponent* CameraComp;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Look")
 	float Sensitivity;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Move")
@@ -45,6 +67,11 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MoveSetting")
 	float WingRotation;
 
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "Health")
+	float MaxHealth;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "Health")
+	float Health;
+
 	UFUNCTION()
 	void MoveXY(const FInputActionValue& value);
 	UFUNCTION()
@@ -54,26 +81,14 @@ protected:
 	UFUNCTION()
 	void Roll(const FInputActionValue& value);
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	UBoxComponent* BoxCollision;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	UStaticMeshComponent* FlightComp;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	UStaticMeshComponent* WingLeftComp;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	UStaticMeshComponent* WingRightComp;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	USpringArmComponent* SpringArmComp;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	UCameraComponent* CameraComp;
-
 	FHitResult HitResult;
 	float Gravity;
 
 	void RotateWings(float DeltaTime);
+	void OnDeath();
 
-	virtual void  EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
+	virtual void  EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 };

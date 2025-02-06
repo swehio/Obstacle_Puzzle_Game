@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 
 #include "DronePawn.h"
 #include "Components/BoxComponent.h"
@@ -8,8 +6,20 @@
 #include "OPGPlayerController.h"
 #include "EnhancedInputComponent.h"
 
-// Sets default values
-ADronePawn::ADronePawn()
+ADronePawn::ADronePawn() :
+	Sensitivity(1),
+	XYSpeed(1),
+	UDSpeed(4),
+	XYFloorSpeed(5),
+	WingRotation(720),
+	GravityMin(-1),
+	GravityMax(-8),
+	AirFriction(0.8f),
+	MaxHealth(100),
+	Health(MaxHealth),
+	IsOnFloor(true),
+	FlightRotation(FRotator::ZeroRotator),
+	FlightStartRotation(FRotator::ZeroRotator)
 {
 	PrimaryActorTick.bCanEverTick = true;
 
@@ -43,18 +53,6 @@ ADronePawn::ADronePawn()
 	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	CameraComp->SetupAttachment(SpringArmComp, USpringArmComponent::SocketName);
 	CameraComp->bUsePawnControlRotation = false;
-
-	Sensitivity = 1;
-	XYSpeed = 1;
-	UDSpeed = 4;
-	XYFloorSpeed = 5;
-	WingRotation = 720;
-	GravityMax = -8;
-	GravityMin = -1;
-	AirFriction = 0.8f;
-	IsOnFloor = true;
-	FlightRotation = FRotator(0, 0, 0);
-	FlightStartRotation = FRotator(0, 0, 0);
 }
 
 void ADronePawn::BeginPlay()
@@ -67,18 +65,28 @@ void ADronePawn::BeginPlay()
 void ADronePawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	//중력 적용
 	AddActorWorldOffset(GetActorUpVector() * Gravity * DeltaTime, true, &HitResult);
+	//Todo : 드론 전원 on/off로 다른 중력 적용
+
 	RotateWings(DeltaTime);
+
+	//드론 메시의 로테이션 추적
 	FlightRotation = FlightComp->GetRelativeRotation();
+
+	//바닥 감지
 	IsOnFloor = (HitResult.bBlockingHit && (HitResult.GetActor()->ActorHasTag("Floor")|| HitResult.GetComponent()->ComponentHasTag("Floor"))) ? true : false;
 
 	if (IsOnFloor)
 	{
 		Gravity = GravityMin;
 		GEngine->AddOnScreenDebugMessage(1, 0.1f, FColor::Green, FString::Printf(TEXT("On the floor!")));
+		//Todo : UI로 보여주기
 	}
 	else
 	{
+		//기울기를 이동에 적용하는 코드
 		float XYRollDirection = 1;
 		float XYPitchDirection =1;
 		Gravity = GravityMax;
@@ -89,6 +97,7 @@ void ADronePawn::Tick(float DeltaTime)
 		AddActorWorldOffset(GetActorRightVector() * (FMath::Abs(FlightRotation.Pitch) / 45) * XYSpeed * XYPitchDirection * DeltaTime, true);
 	}
 
+	//기울기를 Zero로 복원하는 코드
 	if(!FMath::IsNearlyZero(FlightRotation.Roll))
 	{
 		if(FlightRotation.Roll > 0)
@@ -106,11 +115,13 @@ void ADronePawn::Tick(float DeltaTime)
 	}
 }
 
-void ADronePawn::RotateWings(float DeltaTime)
+void ADronePawn::RotateWings(float DeltaTime) //드론 프로펠러 회전시키는 코드
 {
 	WingLeftComp->AddLocalRotation(FRotator(0, WingRotation * DeltaTime, 0));
 	WingRightComp->AddLocalRotation(FRotator(0, WingRotation * DeltaTime, 0));
 }
+
+
 
 void ADronePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -166,7 +177,7 @@ void ADronePawn::MoveXY(const FInputActionValue& value)
 	
 	XYSpeed = IsOnFloor ? XYFloorSpeed : XYFloorSpeed * AirFriction;
 	const FVector2D MoveInputXY = value.Get<FVector2D>();
-	if (IsOnFloor)
+	if (IsOnFloor) //땅에 있을 때 이동
 	{
 		if (!FMath::IsNearlyZero(MoveInputXY.X))
 		{
@@ -179,7 +190,7 @@ void ADronePawn::MoveXY(const FInputActionValue& value)
 			//AddActorWorldOffset(GetControlRotation().RotateVector(FVector::RightVector) * MoveInputXY.Y * XYSpeed, true);
 		}
 	}
-	else
+	else //공중에 있을 때 이동(제한적인 기울기가 되도록 값 입력)
 	{
 		float StopRoll = 1;
 		float StopPitch = 1;
@@ -237,7 +248,7 @@ void ADronePawn::Roll(const FInputActionValue& value)
 {
 	float StopRoll = 1;
 	float RollInput = value.Get<float>();
-	if (!FMath::IsNearlyZero(RollInput) && !IsOnFloor)
+	if (!FMath::IsNearlyZero(RollInput) && !IsOnFloor) //제한적인 각도로 Roll
 	{
 		if (FlightRotation.Pitch > 45 && FlightRotation.Pitch < 90)
 		{
@@ -251,7 +262,43 @@ void ADronePawn::Roll(const FInputActionValue& value)
 	}
 }
 
-void ADronePawn::GameOver()
+float ADronePawn::GetHealth() const
+{
+	return Health;
+}
+
+void ADronePawn::OperateHealth(float Amount, bool bIsPlus)
+{
+	if (bIsPlus)
+	{
+		Health = FMath::Clamp(Health+Amount, 0.0f, MaxHealth);
+	}
+	else
+	{
+		Health = FMath::Clamp(Health - Amount, 0.0f, MaxHealth);
+	}
+}
+
+float ADronePawn::TakeDamage(float DamageAmount, AActor* DmageCauser)
+{
+	OperateHealth(DamageAmount, false);
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("%f"), Health));
+
+	if (Health <= 0.0)
+	{
+		OnDeath();
+	}
+
+	return DamageAmount;
+}
+
+void ADronePawn::OnDeath()
+{
+	//TODO:플레이어가 죽으면 실행될 STATE의 코드
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("Your Die")));
+}
+
+void ADronePawn::GameOver() //TODO:STATE 생성한 후 삭제
 {
 	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("GameOver")));
 }

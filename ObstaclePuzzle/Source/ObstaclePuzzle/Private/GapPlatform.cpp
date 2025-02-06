@@ -6,6 +6,12 @@
 
 AGapPlatform::AGapPlatform()
 {
+	GapDamage = 30;
+}
+
+float AGapPlatform::GetDamage()
+{
+	return GapDamage;
 }
 
 

@@ -14,6 +14,10 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define OBSTACLEPUZZLE_BasePlatform_generated_h
 
+#define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_BasePlatform_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execGetDamage);
+
+
 #define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_BasePlatform_h_16_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesABasePlatform(); \
@@ -40,6 +44,7 @@ public: \
 #define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_BasePlatform_h_16_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
+	FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_BasePlatform_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
 	FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_BasePlatform_h_16_INCLASS_NO_PURE_DECLS \
 	FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_BasePlatform_h_16_ENHANCED_CONSTRUCTORS \
 private: \

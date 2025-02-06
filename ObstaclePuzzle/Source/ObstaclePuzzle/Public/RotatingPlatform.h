@@ -18,7 +18,10 @@ public:
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attribute")
 	float ActivateAttribute;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Platform")
+	float RotatingDamage;
+
 	virtual void ActivatePlatform(float DeltaTime) override;
-	
+	virtual float GetDamage() override;
 	
 };

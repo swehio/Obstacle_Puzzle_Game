@@ -18,7 +18,7 @@ struct FHitResult;
 #define OBSTACLEPUZZLE_PlatformInterface_generated_h
 
 #define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformInterface_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
-	DECLARE_FUNCTION(execOnPlatformOverlap);
+	DECLARE_FUNCTION(execOnPlatformBeginOverlap);
 
 
 #define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformInterface_h_13_ENHANCED_CONSTRUCTORS \

@@ -15,6 +15,7 @@ AMovingPlatform::AMovingPlatform()
 
 	RepeatCycle = 3;
 	IsVisible = true;
+	MovingDamage = 10;
 }
 
 void AMovingPlatform::ActivatePlatform(float DeltaTime)
@@ -44,4 +45,9 @@ void AMovingPlatform::SwitchingRedering()
 		StaticMesh->SetVisibility(true);
 		IsVisible = true;
 	}
+}
+
+float AMovingPlatform::GetDamage()
+{
+	return MovingDamage;
 }
