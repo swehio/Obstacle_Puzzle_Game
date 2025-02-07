@@ -2,21 +2,29 @@
 
 
 #include "OPGPlayerController.h"
+#include "OPGGameState.h"
 #include "EnhancedInputSubsystems.h"
+#include "Blueprint/UserWidget.h"
 
 AOPGPlayerController::AOPGPlayerController() :
 	InputMappingContext(nullptr),
 	MoveXYAction(nullptr),
 	MoveUDAction(nullptr),
 	RollAction(nullptr),
-	LookAction(nullptr)
+	LookAction(nullptr),
+	HUDWidgetClass(nullptr),
+	HUDWidgetInstance(nullptr),
+	StartMenuWidgetClass(nullptr),
+	StartMenuWidgetInstance(nullptr),
+	RestartMenuWidgetClass(nullptr),
+	RestartMenuWidgetInstance(nullptr)
 {
 }
 
 void AOPGPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	if (ULocalPlayer* LocalPlayer = GetLocalPlayer())
 	{
 		if (UEnhancedInputLocalPlayerSubsystem* Subsystem =
@@ -26,6 +34,97 @@ void AOPGPlayerController::BeginPlay()
 			{
 				Subsystem->AddMappingContext(InputMappingContext, 0);
 			}
+		}
+	}
+
+	FString CurrentMapName = GetWorld()->GetMapName();
+	if (CurrentMapName.Contains("LevelStart"))
+	{
+		ShowStartMenu();
+	}
+}
+
+void AOPGPlayerController::InitializeWidgetInstance()
+{
+	if (HUDWidgetInstance)
+	{
+		HUDWidgetInstance->RemoveFromParent();
+		HUDWidgetInstance = nullptr;
+	}
+
+	if (StartMenuWidgetInstance)
+	{
+		StartMenuWidgetInstance->RemoveFromParent();
+		StartMenuWidgetInstance = nullptr;
+	}
+
+	if (RestartMenuWidgetInstance)
+	{
+		RestartMenuWidgetInstance->RemoveFromParent();
+		RestartMenuWidgetInstance = nullptr;
+	}
+}
+
+UUserWidget* AOPGPlayerController::GetHUDWidget() const
+{
+	return HUDWidgetInstance;;
+}
+
+void AOPGPlayerController::ShowGameHUD()
+{
+	InitializeWidgetInstance();
+
+	if (HUDWidgetClass)
+	{
+		HUDWidgetInstance = CreateWidget<UUserWidget>(this, HUDWidgetClass);
+		if (HUDWidgetInstance)
+		{
+			HUDWidgetInstance->AddToViewport();
+
+			bShowMouseCursor = false;
+			SetInputMode(FInputModeGameOnly());
+		}
+
+		AOPGGameState* OPGGameState = GetWorld() ? GetWorld()->GetGameState<AOPGGameState>() : nullptr;
+		if (OPGGameState)
+		{
+			OPGGameState->UpdateHUD();
+		}
+	}
+}
+
+
+
+void AOPGPlayerController::ShowStartMenu()
+{
+	InitializeWidgetInstance();
+
+	if (StartMenuWidgetClass)
+	{
+		StartMenuWidgetInstance = CreateWidget<UUserWidget>(this, StartMenuWidgetClass);
+		if (StartMenuWidgetInstance)
+		{
+			StartMenuWidgetInstance->AddToViewport();
+
+			bShowMouseCursor = true;
+			SetInputMode(FInputModeUIOnly());
+		}
+	}
+}
+
+void AOPGPlayerController::ShowRestartMenu()
+{
+	InitializeWidgetInstance();
+
+	if (RestartMenuWidgetClass)
+	{
+		RestartMenuWidgetInstance = CreateWidget<UUserWidget>(this, RestartMenuWidgetClass);
+		if (RestartMenuWidgetInstance)
+		{
+			RestartMenuWidgetInstance->AddToViewport();
+
+			bShowMouseCursor = true;
+			SetInputMode(FInputModeUIOnly());
 		}
 	}
 }

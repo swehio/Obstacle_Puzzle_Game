@@ -93,10 +93,10 @@ AGapPlatform::~AGapPlatform() {}
 struct Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_GapPlatform_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AGapPlatform, AGapPlatform::StaticClass, TEXT("AGapPlatform"), &Z_Registration_Info_UClass_AGapPlatform, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGapPlatform), 3355042899U) },
+		{ Z_Construct_UClass_AGapPlatform, AGapPlatform::StaticClass, TEXT("AGapPlatform"), &Z_Registration_Info_UClass_AGapPlatform, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGapPlatform), 1026888644U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_GapPlatform_h_1677466575(TEXT("/Script/ObstaclePuzzle"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_GapPlatform_h_2544497027(TEXT("/Script/ObstaclePuzzle"),
 	Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_GapPlatform_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_GapPlatform_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

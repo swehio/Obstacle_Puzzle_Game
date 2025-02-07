@@ -1,5 +1,6 @@
 
 #include "DronePawn.h"
+#include "OPGGameState.h"
 #include "Components/BoxComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
@@ -279,7 +280,7 @@ void ADronePawn::OperateHealth(float Amount, bool bIsPlus)
 	}
 }
 
-float ADronePawn::TakeDamage(float DamageAmount, AActor* DmageCauser)
+float ADronePawn::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	OperateHealth(DamageAmount, false);
 	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("%f"), Health));
@@ -294,19 +295,11 @@ float ADronePawn::TakeDamage(float DamageAmount, AActor* DmageCauser)
 
 void ADronePawn::OnDeath()
 {
-	//TODO:플레이어가 죽으면 실행될 STATE의 코드
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("Your Die")));
-}
-
-void ADronePawn::GameOver() //TODO:STATE 생성한 후 삭제
-{
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("GameOver")));
-}
-
-void ADronePawn::EndPlay(const EEndPlayReason::Type EndPlayReason)
-{
-	GameOver();
-	Super::EndPlay(EndPlayReason);
+	AOPGGameState* OPGGameState = GetWorld() ? GetWorld()->GetGameState<AOPGGameState>() : nullptr;
+	if (OPGGameState)
+	{
+		OPGGameState->OnGameOver();
+	}
 }
 
 

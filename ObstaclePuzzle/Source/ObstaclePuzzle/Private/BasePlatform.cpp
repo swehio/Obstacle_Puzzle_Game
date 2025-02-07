@@ -3,6 +3,7 @@
 
 #include "BasePlatform.h"
 #include "Components/BoxComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "DronePawn.h"
 
 
@@ -47,7 +48,7 @@ void ABasePlatform::OnPlatformBeginOverlap(UPrimitiveComponent* OverlappedComp, 
 {
 	if (((OtherActor && OtherActor->ActorHasTag("Player")) || OtherComp && OtherComp->ComponentHasTag("Player")) && !bPlatformOverlapDoOnce)
 	{
-		Cast<ADronePawn>(OtherActor)->TakeDamage(GetDamage(), this);
+		UGameplayStatics::ApplyDamage(OtherActor, PlatformDamage, nullptr, this, UDamageType::StaticClass());
 		bPlatformOverlapDoOnce = true;
 	}
 }
