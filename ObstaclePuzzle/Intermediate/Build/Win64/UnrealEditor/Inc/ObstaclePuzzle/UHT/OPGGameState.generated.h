@@ -14,13 +14,13 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define OBSTACLEPUZZLE_OPGGameState_generated_h
 
-#define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGGameState_h_11_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGGameState_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execEndLevel); \
 	DECLARE_FUNCTION(execStartGame); \
 	DECLARE_FUNCTION(execOnGameOver);
 
 
-#define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGGameState_h_11_INCLASS_NO_PURE_DECLS \
+#define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGGameState_h_13_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAOPGGameState(); \
 	friend struct Z_Construct_UClass_AOPGGameState_Statics; \
@@ -29,7 +29,7 @@ public: \
 	DECLARE_SERIALIZER(AOPGGameState)
 
 
-#define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGGameState_h_11_ENHANCED_CONSTRUCTORS \
+#define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGGameState_h_13_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	AOPGGameState(AOPGGameState&&); \
@@ -41,13 +41,13 @@ public: \
 	NO_API virtual ~AOPGGameState();
 
 
-#define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGGameState_h_8_PROLOG
-#define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGGameState_h_11_GENERATED_BODY \
+#define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGGameState_h_10_PROLOG
+#define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGGameState_h_13_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGGameState_h_11_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGGameState_h_11_INCLASS_NO_PURE_DECLS \
-	FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGGameState_h_11_ENHANCED_CONSTRUCTORS \
+	FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGGameState_h_13_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGGameState_h_13_INCLASS_NO_PURE_DECLS \
+	FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGGameState_h_13_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

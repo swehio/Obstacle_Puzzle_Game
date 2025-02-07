@@ -5,6 +5,8 @@
 #include "GameFramework/GameState.h"
 #include "OPGGameState.generated.h"
 
+DECLARE_MULTICAST_DELEGATE(FDel_Multi);
+
 UCLASS()
 class OBSTACLEPUZZLE_API AOPGGameState : public AGameState
 {
@@ -12,6 +14,8 @@ class OBSTACLEPUZZLE_API AOPGGameState : public AGameState
 	
 public: 
 	AOPGGameState();
+
+	FDel_Multi FPhaseEnd;
 
 	UPROPERTY(VisibleAnyWhere, BlueprintReadWrite, Category = "Level")
 	int32 CurrentLevelIndex;
