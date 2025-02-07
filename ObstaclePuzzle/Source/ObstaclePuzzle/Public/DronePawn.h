@@ -20,40 +20,18 @@ public:
 	// Sets default values for this pawn's properties
 	ADronePawn();
 
-	void GameOver();
+	UFUNCTION(BlueprintPure, Category = "Health")
+	float GetHealth() const;
+	UFUNCTION(BlueprintCallable, Category = "Health")
+	void OperateHealth(float Amount, bool bIsPlus);
+	UFUNCTION(BlueprintCallable, Category = "Health")
+	float TakeDamage(
+		float DamageAmount, 
+		struct FDamageEvent const& DamageEvent,
+		AController* EventInstigator,
+		AActor* DmageCauser);
+
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Look")
-	float Sensitivity;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Move")
-	float XYSpeed;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Move")
-	float UDSpeed;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Move")
-	float AirFriction;
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Setting|Move")
-	float GravityMin;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Move")
-	float GravityMax;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Move")
-	float XYFloorSpeed;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Setting|Move")
-	bool IsOnFloor;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting|Move")
-	FRotator FlightRotation;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting|Move")
-	FRotator FlightStartRotation;
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MoveSetting")
-	float WingRotation;
-
-	UFUNCTION()
-	void MoveXY(const FInputActionValue& value);
-	UFUNCTION()
-	void MoveUD(const FInputActionValue& value);
-	UFUNCTION()
-	void Look(const FInputActionValue& value);
-	UFUNCTION()
-	void Roll(const FInputActionValue& value);
-
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UBoxComponent* BoxCollision;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
@@ -67,12 +45,50 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UCameraComponent* CameraComp;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Look")
+	float Sensitivity;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Move")
+	float XYSpeed;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Move")
+	float UDSpeed;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Setting|Move")
+	float GravityMin;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Move")
+	float GravityMax;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Move")
+	float AirFriction;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setting|Move")
+	float XYFloorSpeed;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MoveSetting")
+	float WingRotation;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Setting|Move")
+	bool IsOnFloor;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting|Move")
+	FRotator FlightRotation;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "MoveSetting|Move")
+	FRotator FlightStartRotation;
+
+
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "Health")
+	float MaxHealth;
+	UPROPERTY(EditAnyWhere, BlueprintReadWrite, Category = "Health")
+	float Health;
+
+	UFUNCTION()
+	void MoveXY(const FInputActionValue& value);
+	UFUNCTION()
+	void MoveUD(const FInputActionValue& value);
+	UFUNCTION()
+	void Look(const FInputActionValue& value);
+	UFUNCTION()
+	void Roll(const FInputActionValue& value);
+
 	FHitResult HitResult;
 	float Gravity;
 
 	void RotateWings(float DeltaTime);
+	void OnDeath();
 
-	virtual void  EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

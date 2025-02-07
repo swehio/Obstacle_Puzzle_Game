@@ -93,9 +93,14 @@ struct Z_Construct_UClass_AMovingPlatform_Statics
 		{ "Category", "Attribute" },
 		{ "ModuleRelativePath", "Public/MovingPlatform.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MovingDamage_MetaData[] = {
+		{ "Category", "Platform" },
+		{ "ModuleRelativePath", "Public/MovingPlatform.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_ActivateAttribute;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_MaxRange;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_MovingDamage;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
@@ -109,9 +114,11 @@ struct Z_Construct_UClass_AMovingPlatform_Statics
 };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMovingPlatform_Statics::NewProp_ActivateAttribute = { "ActivateAttribute", nullptr, (EPropertyFlags)0x0020080000000015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMovingPlatform, ActivateAttribute), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ActivateAttribute_MetaData), NewProp_ActivateAttribute_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMovingPlatform_Statics::NewProp_MaxRange = { "MaxRange", nullptr, (EPropertyFlags)0x0020080000000015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMovingPlatform, MaxRange), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaxRange_MetaData), NewProp_MaxRange_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AMovingPlatform_Statics::NewProp_MovingDamage = { "MovingDamage", nullptr, (EPropertyFlags)0x0020080000000015, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMovingPlatform, MovingDamage), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MovingDamage_MetaData), NewProp_MovingDamage_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMovingPlatform_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMovingPlatform_Statics::NewProp_ActivateAttribute,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMovingPlatform_Statics::NewProp_MaxRange,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMovingPlatform_Statics::NewProp_MovingDamage,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AMovingPlatform_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AMovingPlatform_Statics::DependentSingletons[])() = {
@@ -154,10 +161,10 @@ AMovingPlatform::~AMovingPlatform() {}
 struct Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_MovingPlatform_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMovingPlatform, AMovingPlatform::StaticClass, TEXT("AMovingPlatform"), &Z_Registration_Info_UClass_AMovingPlatform, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMovingPlatform), 4191521042U) },
+		{ Z_Construct_UClass_AMovingPlatform, AMovingPlatform::StaticClass, TEXT("AMovingPlatform"), &Z_Registration_Info_UClass_AMovingPlatform, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMovingPlatform), 4223415502U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_MovingPlatform_h_3486251689(TEXT("/Script/ObstaclePuzzle"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_MovingPlatform_h_1106365726(TEXT("/Script/ObstaclePuzzle"),
 	Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_MovingPlatform_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_MovingPlatform_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

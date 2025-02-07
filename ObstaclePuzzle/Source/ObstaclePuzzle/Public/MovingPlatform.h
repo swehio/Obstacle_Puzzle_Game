@@ -26,12 +26,15 @@ protected:
 	float ActivateAttribute;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Attribute")
 	float MaxRange;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Platform")
+	float MovingDamage;
 
 	FVector StartLocation;
 	FTimerHandle MovingTimerHandle;
 	float RepeatCycle;
 	bool IsVisible;
 
+	virtual float GetDamage() override;
 	virtual void ActivatePlatform(float DeltaTime);
 	void SwitchingRedering();
 	

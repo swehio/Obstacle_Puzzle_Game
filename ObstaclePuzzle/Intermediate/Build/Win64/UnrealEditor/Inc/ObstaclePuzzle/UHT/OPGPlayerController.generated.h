@@ -9,10 +9,18 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class UUserWidget;
 #ifdef OBSTACLEPUZZLE_OPGPlayerController_generated_h
 #error "OPGPlayerController.generated.h already included, missing '#pragma once' in OPGPlayerController.h"
 #endif
 #define OBSTACLEPUZZLE_OPGPlayerController_generated_h
+
+#define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGPlayerController_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execShowRestartMenu); \
+	DECLARE_FUNCTION(execShowStartMenu); \
+	DECLARE_FUNCTION(execShowGameHUD); \
+	DECLARE_FUNCTION(execGetHUDWidget);
+
 
 #define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGPlayerController_h_15_INCLASS_NO_PURE_DECLS \
 private: \
@@ -39,6 +47,7 @@ public: \
 #define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGPlayerController_h_15_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
+	FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGPlayerController_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
 	FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGPlayerController_h_15_INCLASS_NO_PURE_DECLS \
 	FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGPlayerController_h_15_ENHANCED_CONSTRUCTORS \
 private: \

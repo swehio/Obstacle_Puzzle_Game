@@ -36,8 +36,13 @@ struct Z_Construct_UClass_ARotatingPlatform_Statics
 		{ "Category", "Attribute" },
 		{ "ModuleRelativePath", "Public/RotatingPlatform.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_RotatingDamage_MetaData[] = {
+		{ "Category", "Platform" },
+		{ "ModuleRelativePath", "Public/RotatingPlatform.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_ActivateAttribute;
+	static const UECodeGen_Private::FFloatPropertyParams NewProp_RotatingDamage;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -46,8 +51,10 @@ struct Z_Construct_UClass_ARotatingPlatform_Statics
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ARotatingPlatform_Statics::NewProp_ActivateAttribute = { "ActivateAttribute", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ARotatingPlatform, ActivateAttribute), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ActivateAttribute_MetaData), NewProp_ActivateAttribute_MetaData) };
+const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ARotatingPlatform_Statics::NewProp_RotatingDamage = { "RotatingDamage", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ARotatingPlatform, RotatingDamage), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RotatingDamage_MetaData), NewProp_RotatingDamage_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ARotatingPlatform_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARotatingPlatform_Statics::NewProp_ActivateAttribute,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARotatingPlatform_Statics::NewProp_RotatingDamage,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ARotatingPlatform_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_ARotatingPlatform_Statics::DependentSingletons[])() = {
@@ -91,10 +98,10 @@ ARotatingPlatform::~ARotatingPlatform() {}
 struct Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_RotatingPlatform_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ARotatingPlatform, ARotatingPlatform::StaticClass, TEXT("ARotatingPlatform"), &Z_Registration_Info_UClass_ARotatingPlatform, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARotatingPlatform), 2384303900U) },
+		{ Z_Construct_UClass_ARotatingPlatform, ARotatingPlatform::StaticClass, TEXT("ARotatingPlatform"), &Z_Registration_Info_UClass_ARotatingPlatform, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ARotatingPlatform), 3157523594U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_RotatingPlatform_h_106868302(TEXT("/Script/ObstaclePuzzle"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_RotatingPlatform_h_2724524401(TEXT("/Script/ObstaclePuzzle"),
 	Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_RotatingPlatform_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_RotatingPlatform_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

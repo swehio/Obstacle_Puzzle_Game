@@ -3,10 +3,15 @@
 
 #include "BasePlatform.h"
 #include "Components/BoxComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "DronePawn.h"
 
 
-ABasePlatform::ABasePlatform()
+ABasePlatform::ABasePlatform() :
+	PlatformSpeed(1000),
+	ShouldMovePlatform(true),
+	PlatformDamage(20),
+	bPlatformOverlapDoOnce(false)
 {
 	PrimaryActorTick.bCanEverTick = true;
 	Scene = CreateDefaultSubobject<USceneComponent>(TEXT("Scene"));
@@ -21,11 +26,8 @@ ABasePlatform::ABasePlatform()
 	StaticMesh->SetupAttachment(BoxCollision);
 
 
-	StaticMesh->OnComponentBeginOverlap.AddDynamic(this, &ABasePlatform::OnPlatformOverlap);
-
-	PlatformSpeed = 1000;
-	ShouldMovePlatform = true;
-
+	StaticMesh->OnComponentBeginOverlap.AddDynamic(this, &ABasePlatform::OnPlatformBeginOverlap);
+	StaticMesh->OnComponentEndOverlap.AddDynamic(this, &ABasePlatform::OnPlatformEndOverlap);
 }
 
 void ABasePlatform::SetPlatformSpeed(float Speed)
@@ -36,17 +38,26 @@ void ABasePlatform::SetPlatformSpeed(float Speed)
 void ABasePlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	
 	if(ShouldMovePlatform) AddActorWorldOffset(FVector(-PlatformSpeed, 0, 0)*DeltaTime, true);
 
 	ActivatePlatform(DeltaTime);
 }
 
-void ABasePlatform::OnPlatformOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void ABasePlatform::OnPlatformBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if ((OtherActor && OtherActor->ActorHasTag("Player")) || OtherComp && OtherComp->ComponentHasTag("Player"))
+	if (((OtherActor && OtherActor->ActorHasTag("Player")) || OtherComp && OtherComp->ComponentHasTag("Player")) && !bPlatformOverlapDoOnce)
 	{
-		Cast<ADronePawn>(OtherActor)->Destroy();
+		UGameplayStatics::ApplyDamage(OtherActor, PlatformDamage, nullptr, this, UDamageType::StaticClass());
+		bPlatformOverlapDoOnce = true;
+	}
+}
+
+void ABasePlatform::OnPlatformEndOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	if (((OtherActor && OtherActor->ActorHasTag("Player")) || OtherComp && OtherComp->ComponentHasTag("Player")) && !bPlatformOverlapDoOnce)
+	{
+		bPlatformOverlapDoOnce = false;
 	}
 }
 
@@ -58,6 +69,11 @@ void ABasePlatform::ActivatePlatform(float DeltaTime)
 void ABasePlatform::SetActivateAttribute(float Attribute)
 {
 
+}
+
+float ABasePlatform::GetDamage()
+{
+	return PlatformDamage;
 }
 
 FName ABasePlatform::GetPlatformType() const

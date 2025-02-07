@@ -63,6 +63,9 @@
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\OPGCharacter.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\OPGGameState.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\OPGPlatform.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
@@ -109,6 +112,9 @@
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\OPGCharacter.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\OPGGameState.h">
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\OPGPlatform.h">

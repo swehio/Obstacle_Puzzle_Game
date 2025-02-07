@@ -3,10 +3,11 @@
 
 #include "RotatingPlatform.h"
 
-void ARotatingPlatform::ARotationgPlatform()
+void ARotatingPlatform::ARotationgPlatform() 
 {
 	PrimaryActorTick.bCanEverTick = true;
 	ActivateAttribute = 1000;
+	RotatingDamage = 20;
 }
 
 void ARotatingPlatform::SetActivateAttribute(float Attribute)
@@ -18,5 +19,10 @@ void ARotatingPlatform::ActivatePlatform(float DeltaTime)
 {
 	Super::ActivatePlatform(DeltaTime);
 	AddActorLocalRotation(FRotator(0, 0, ActivateAttribute) * DeltaTime);
+}
+
+float ARotatingPlatform::GetDamage()
+{
+	return RotatingDamage;
 }
 
