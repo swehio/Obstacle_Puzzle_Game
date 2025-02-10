@@ -81,6 +81,9 @@
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\PlatformSpawner.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\PlatformSpawnerShutter.cpp">
+      <Filter>Source\ObstaclePuzzle\Private</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Private\PlatformSpawnRow.cpp">
       <Filter>Source\ObstaclePuzzle\Private</Filter>
     </ClCompile>
@@ -136,6 +139,9 @@
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\PlatformSpawner.h">
+      <Filter>Source\ObstaclePuzzle\Public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\PlatformSpawnerShutter.h">
       <Filter>Source\ObstaclePuzzle\Public</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ObstaclePuzzle\Public\PlatformSpawnRow.h">

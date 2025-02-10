@@ -65,6 +65,36 @@ DEFINE_FUNCTION(AOPGPlayerController::execGetHUDWidget)
 }
 // End Class AOPGPlayerController Function GetHUDWidget
 
+// Begin Class AOPGPlayerController Function InitializeWidgetInstance
+struct Z_Construct_UFunction_AOPGPlayerController_InitializeWidgetInstance_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "HUD" },
+		{ "ModuleRelativePath", "Public/OPGPlayerController.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOPGPlayerController_InitializeWidgetInstance_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOPGPlayerController, nullptr, "InitializeWidgetInstance", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOPGPlayerController_InitializeWidgetInstance_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOPGPlayerController_InitializeWidgetInstance_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_AOPGPlayerController_InitializeWidgetInstance()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOPGPlayerController_InitializeWidgetInstance_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AOPGPlayerController::execInitializeWidgetInstance)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->InitializeWidgetInstance();
+	P_NATIVE_END;
+}
+// End Class AOPGPlayerController Function InitializeWidgetInstance
+
 // Begin Class AOPGPlayerController Function ShowGameHUD
 struct Z_Construct_UFunction_AOPGPlayerController_ShowGameHUD_Statics
 {
@@ -125,6 +155,36 @@ DEFINE_FUNCTION(AOPGPlayerController::execShowRestartMenu)
 }
 // End Class AOPGPlayerController Function ShowRestartMenu
 
+// Begin Class AOPGPlayerController Function ShowSelectMapMenu
+struct Z_Construct_UFunction_AOPGPlayerController_ShowSelectMapMenu_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "Category", "SelectMapMenu" },
+		{ "ModuleRelativePath", "Public/OPGPlayerController.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_AOPGPlayerController_ShowSelectMapMenu_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_AOPGPlayerController, nullptr, "ShowSelectMapMenu", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_AOPGPlayerController_ShowSelectMapMenu_Statics::Function_MetaDataParams), Z_Construct_UFunction_AOPGPlayerController_ShowSelectMapMenu_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_AOPGPlayerController_ShowSelectMapMenu()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_AOPGPlayerController_ShowSelectMapMenu_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(AOPGPlayerController::execShowSelectMapMenu)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->ShowSelectMapMenu();
+	P_NATIVE_END;
+}
+// End Class AOPGPlayerController Function ShowSelectMapMenu
+
 // Begin Class AOPGPlayerController Function ShowStartMenu
 struct Z_Construct_UFunction_AOPGPlayerController_ShowStartMenu_Statics
 {
@@ -161,8 +221,10 @@ void AOPGPlayerController::StaticRegisterNativesAOPGPlayerController()
 	UClass* Class = AOPGPlayerController::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
 		{ "GetHUDWidget", &AOPGPlayerController::execGetHUDWidget },
+		{ "InitializeWidgetInstance", &AOPGPlayerController::execInitializeWidgetInstance },
 		{ "ShowGameHUD", &AOPGPlayerController::execShowGameHUD },
 		{ "ShowRestartMenu", &AOPGPlayerController::execShowRestartMenu },
+		{ "ShowSelectMapMenu", &AOPGPlayerController::execShowSelectMapMenu },
 		{ "ShowStartMenu", &AOPGPlayerController::execShowStartMenu },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -227,6 +289,15 @@ struct Z_Construct_UClass_AOPGPlayerController_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/OPGPlayerController.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SelectMapMenuWidgetClass_MetaData[] = {
+		{ "Category", "SelectMapMenu" },
+		{ "ModuleRelativePath", "Public/OPGPlayerController.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SelectMapMenuWidgetInstance_MetaData[] = {
+		{ "Category", "SelectMapMenu" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/OPGPlayerController.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_InputMappingContext;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MoveXYAction;
@@ -239,12 +310,16 @@ struct Z_Construct_UClass_AOPGPlayerController_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_StartMenuWidgetInstance;
 	static const UECodeGen_Private::FClassPropertyParams NewProp_RestartMenuWidgetClass;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_RestartMenuWidgetInstance;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_SelectMapMenuWidgetClass;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_SelectMapMenuWidgetInstance;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_AOPGPlayerController_GetHUDWidget, "GetHUDWidget" }, // 1329381910
+		{ &Z_Construct_UFunction_AOPGPlayerController_InitializeWidgetInstance, "InitializeWidgetInstance" }, // 2526685286
 		{ &Z_Construct_UFunction_AOPGPlayerController_ShowGameHUD, "ShowGameHUD" }, // 201579301
 		{ &Z_Construct_UFunction_AOPGPlayerController_ShowRestartMenu, "ShowRestartMenu" }, // 3137221232
+		{ &Z_Construct_UFunction_AOPGPlayerController_ShowSelectMapMenu, "ShowSelectMapMenu" }, // 3881235762
 		{ &Z_Construct_UFunction_AOPGPlayerController_ShowStartMenu, "ShowStartMenu" }, // 4170509485
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -264,6 +339,8 @@ const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AOPGPlayerContr
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AOPGPlayerController_Statics::NewProp_StartMenuWidgetInstance = { "StartMenuWidgetInstance", nullptr, (EPropertyFlags)0x001000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOPGPlayerController, StartMenuWidgetInstance), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_StartMenuWidgetInstance_MetaData), NewProp_StartMenuWidgetInstance_MetaData) };
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AOPGPlayerController_Statics::NewProp_RestartMenuWidgetClass = { "RestartMenuWidgetClass", nullptr, (EPropertyFlags)0x0014000000000005, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOPGPlayerController, RestartMenuWidgetClass), Z_Construct_UClass_UClass, Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RestartMenuWidgetClass_MetaData), NewProp_RestartMenuWidgetClass_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AOPGPlayerController_Statics::NewProp_RestartMenuWidgetInstance = { "RestartMenuWidgetInstance", nullptr, (EPropertyFlags)0x001000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOPGPlayerController, RestartMenuWidgetInstance), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RestartMenuWidgetInstance_MetaData), NewProp_RestartMenuWidgetInstance_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AOPGPlayerController_Statics::NewProp_SelectMapMenuWidgetClass = { "SelectMapMenuWidgetClass", nullptr, (EPropertyFlags)0x0014000000000005, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOPGPlayerController, SelectMapMenuWidgetClass), Z_Construct_UClass_UClass, Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SelectMapMenuWidgetClass_MetaData), NewProp_SelectMapMenuWidgetClass_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AOPGPlayerController_Statics::NewProp_SelectMapMenuWidgetInstance = { "SelectMapMenuWidgetInstance", nullptr, (EPropertyFlags)0x001000000008000d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOPGPlayerController, SelectMapMenuWidgetInstance), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SelectMapMenuWidgetInstance_MetaData), NewProp_SelectMapMenuWidgetInstance_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AOPGPlayerController_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOPGPlayerController_Statics::NewProp_InputMappingContext,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOPGPlayerController_Statics::NewProp_MoveXYAction,
@@ -276,6 +353,8 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AOPGPlaye
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOPGPlayerController_Statics::NewProp_StartMenuWidgetInstance,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOPGPlayerController_Statics::NewProp_RestartMenuWidgetClass,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOPGPlayerController_Statics::NewProp_RestartMenuWidgetInstance,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOPGPlayerController_Statics::NewProp_SelectMapMenuWidgetClass,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOPGPlayerController_Statics::NewProp_SelectMapMenuWidgetInstance,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AOPGPlayerController_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AOPGPlayerController_Statics::DependentSingletons[])() = {
@@ -318,10 +397,10 @@ AOPGPlayerController::~AOPGPlayerController() {}
 struct Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGPlayerController_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AOPGPlayerController, AOPGPlayerController::StaticClass, TEXT("AOPGPlayerController"), &Z_Registration_Info_UClass_AOPGPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AOPGPlayerController), 1108310714U) },
+		{ Z_Construct_UClass_AOPGPlayerController, AOPGPlayerController::StaticClass, TEXT("AOPGPlayerController"), &Z_Registration_Info_UClass_AOPGPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AOPGPlayerController), 892018962U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGPlayerController_h_3058923329(TEXT("/Script/ObstaclePuzzle"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGPlayerController_h_1783152916(TEXT("/Script/ObstaclePuzzle"),
 	Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGPlayerController_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGPlayerController_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

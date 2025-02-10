@@ -40,6 +40,10 @@ public:
 	TSubclassOf<UUserWidget> RestartMenuWidgetClass;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RestartMenu")
 	UUserWidget* RestartMenuWidgetInstance;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="SelectMapMenu")
+	TSubclassOf<UUserWidget> SelectMapMenuWidgetClass;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SelectMapMenu")
+	UUserWidget* SelectMapMenuWidgetInstance;
 
 	UFUNCTION(BlueprintPure, Category = "HUD")
 	UUserWidget* GetHUDWidget() const;
@@ -48,11 +52,15 @@ public:
 	void ShowGameHUD();
 	UFUNCTION(BlueprintCallable, Category = "RestartMenu")
 	void ShowStartMenu();
+	UFUNCTION(BlueprintCallable, Category = "SelectMapMenu")
+	void ShowSelectMapMenu();
 	UFUNCTION(BlueprintCallable, Category = "RestartMenu")
 	void ShowRestartMenu();
+	UFUNCTION(BlueprintCallable, Category = "HUD")
+	void InitializeWidgetInstance();
 
 protected:
 	virtual void BeginPlay() override;
-	void InitializeWidgetInstance();
+	
 
 };

@@ -67,8 +67,10 @@ void AShutter::ComparePhase()
 
 void AShutter::OpenDoor(float DeltaTime)
 {
-	if(GetActorLocation().Z - DoorStartLocation.Z < MoveRange)
-		AddActorLocalOffset(FVector(0, 0, MoveSpeed)* DeltaTime);
+	if (GetActorLocation().Z - DoorStartLocation.Z < MoveRange)
+		AddActorLocalOffset(FVector(0, 0, MoveSpeed) * DeltaTime);
+	else
+		Destroy();
 }
 
 // Called every frame

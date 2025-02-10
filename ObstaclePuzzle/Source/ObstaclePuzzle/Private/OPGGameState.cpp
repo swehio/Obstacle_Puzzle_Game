@@ -3,6 +3,7 @@
 
 #include "OPGGameState.h"
 #include "OPGPlayerController.h"
+#include "DronePawn.h"
 #include "OPGGameInstance.h"
 #include "Kismet/GameplayStatics.h"
 #include "Components/TextBlock.h"
@@ -42,13 +43,7 @@ void AOPGGameState::StartGame()
 
 void AOPGGameState::StartLevel()
 {
-	if (APlayerController* PlayerController = GetWorld()->GetFirstPlayerController())
-	{
-		if (AOPGPlayerController* OPGPlayerController = Cast<AOPGPlayerController>(PlayerController))
-		{
-			OPGPlayerController->ShowGameHUD();
-		}
-	}
+
 
 	if (UGameInstance* GameInstance = GetGameInstance())
 	{
@@ -56,8 +51,20 @@ void AOPGGameState::StartLevel()
 		if (OPGGameInstance)
 		{
 			CurrentLevelIndex = OPGGameInstance->CurrentLevelIndex;
+
+			if (APlayerController* PlayerController = GetWorld()->GetFirstPlayerController())
+			{
+				if (AOPGPlayerController* OPGPlayerController = Cast<AOPGPlayerController>(PlayerController))
+				{
+					OPGPlayerController->ShowGameHUD();
+					Cast<ADronePawn>(OPGPlayerController->GetPawn())->SetHealth(OPGGameInstance->PlayerHealth);
+				}
+			}
+			
 		}
 	}
+
+	if (FPhaseEnd.IsBound() == true) FPhaseEnd.Broadcast();
 
 	GetWorldTimerManager().SetTimer(PhaseTimerHandle, this, &AOPGGameState::OnPhaseTimeUp, PhaseDuration, true);
 }
@@ -84,7 +91,6 @@ void AOPGGameState::OnGameOver()
 void AOPGGameState::EndLevel()
 {
 	GetWorldTimerManager().ClearTimer(PhaseTimerHandle);
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("EndLevel Work")));
 
 	if (UGameInstance* GameInstance = GetGameInstance())
 	{
@@ -93,6 +99,14 @@ void AOPGGameState::EndLevel()
 		{
 			++CurrentLevelIndex;
 			OPGGameInstance->CurrentLevelIndex = CurrentLevelIndex;
+			
+			if (APlayerController* PlayerController = GetWorld()->GetFirstPlayerController())
+			{
+				if (AOPGPlayerController* OPGPlayerController = Cast<AOPGPlayerController>(PlayerController))
+				{
+					OPGGameInstance->PlayerHealth = Cast<ADronePawn>(OPGPlayerController->GetPawn())->GetHealth();
+				}
+			}
 
 			if (CurrentLevelIndex >= MaxLevel)
 			{

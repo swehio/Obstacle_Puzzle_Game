@@ -25,6 +25,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Health")
 	void OperateHealth(float Amount, bool bIsPlus);
 	UFUNCTION(BlueprintCallable, Category = "Health")
+	void SetHealth(float hp);
+	UFUNCTION(BlueprintCallable, Category = "Health")
 	float TakeDamage(
 		float DamageAmount, 
 		struct FDamageEvent const& DamageEvent,

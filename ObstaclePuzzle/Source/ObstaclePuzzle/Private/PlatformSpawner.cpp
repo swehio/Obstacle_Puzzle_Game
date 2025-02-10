@@ -2,6 +2,7 @@
 
 
 #include "PlatformSpawner.h"
+#include "OPGGameState.h"
 #include "Components/SphereComponent.h"
 
 #include "PlatformSpawnRow.h"
@@ -19,17 +20,22 @@ APlatformSpawner::APlatformSpawner()
 	PlatformDataTable = nullptr;
 	SpawnRepeatTime = 5.0f;
 	PlatformSpeed = 400;
-
+	ActivePhase = 0;
+	CurrentPhase = 0;
+	bActive = false;
 }
 
 AActor* APlatformSpawner::SpawnActor(TSubclassOf<AActor> PlatformClass)
 {
 	if (!PlatformClass) return nullptr;
+
 	float RandomNum = FMath::RandRange(0, 45);
 	float RandomAttribute = FMath::RandRange(0, 150);
 	AActor* SpawnedActor = GetWorld()->SpawnActor<AActor>(PlatformClass, GetActorLocation()+FVector(0, 0, RandomNum), FRotator(0, 0, RandomNum));
-	Cast<ABasePlatform>(SpawnedActor)->SetPlatformSpeed(PlatformSpeed);
+
+	Cast<ABasePlatform>(SpawnedActor)->SetPlatformSpeed(PlatformSpeed + (PlatformSpeed*CurrentPhase)/2);
 	Cast<ABasePlatform>(SpawnedActor)->SetActivateAttribute(RandomAttribute);
+
 	return SpawnedActor;
 }
 
@@ -47,7 +53,8 @@ AActor* APlatformSpawner::SpawnRandomPlatform()
 
 void APlatformSpawner::VoidSpawnRandomPlatform()
 {
-	AActor* SpawnedPlatform = SpawnRandomPlatform();
+	if (bActive)
+		AActor* SpawnedPlatform = SpawnRandomPlatform();
 }
 
 FPlatformSpawnRow* APlatformSpawner::GetRandomPlatform() const
@@ -87,15 +94,42 @@ FPlatformSpawnRow* APlatformSpawner::GetRandomPlatform() const
 void APlatformSpawner::BeginPlay()
 {
 	Super::BeginPlay();
+
+	AGameStateBase* GameState = GetWorld()->GetGameState();
+	if (GameState)
+	{
+		AOPGGameState* OPGGameState = Cast<AOPGGameState>(GameState);
+		if (OPGGameState)
+		{
+			OPGGameState->FPhaseEnd.AddUFunction(this, FName("SpawnComparePhase"));
+		}
+	}
 	
 	GetWorldTimerManager().SetTimer(SpawnTimerHandle, this, &APlatformSpawner::VoidSpawnRandomPlatform, SpawnRepeatTime, true, 0.0f);
+}
+
+void APlatformSpawner::SpawnComparePhase()
+{
+	AGameStateBase* GameState = GetWorld()->GetGameState();
+	if (GameState)
+	{
+		AOPGGameState* OPGGameState = Cast<AOPGGameState>(GameState);
+		if (OPGGameState)
+		{
+			this->CurrentPhase = OPGGameState->CurrentPhase;
+			if (CurrentPhase == ActivePhase && !bActive)
+			{
+				bActive = true;
+			}
+		}
+	}
+
 }
 
 // Called every frame
 void APlatformSpawner::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 
 }
 

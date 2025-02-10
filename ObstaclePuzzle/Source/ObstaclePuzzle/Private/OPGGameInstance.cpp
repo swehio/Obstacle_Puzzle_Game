@@ -6,4 +6,5 @@
 UOPGGameInstance::UOPGGameInstance()
 {
 	CurrentLevelIndex = 0;
+	PlayerHealth = 100;
 }

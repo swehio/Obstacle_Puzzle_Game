@@ -24,6 +24,7 @@ struct FInputActionValue;
 	DECLARE_FUNCTION(execMoveUD); \
 	DECLARE_FUNCTION(execMoveXY); \
 	DECLARE_FUNCTION(execTakeDamage); \
+	DECLARE_FUNCTION(execSetHealth); \
 	DECLARE_FUNCTION(execOperateHealth); \
 	DECLARE_FUNCTION(execGetHealth);
 

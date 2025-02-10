@@ -16,7 +16,9 @@ class UUserWidget;
 #define OBSTACLEPUZZLE_OPGPlayerController_generated_h
 
 #define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_OPGPlayerController_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execInitializeWidgetInstance); \
 	DECLARE_FUNCTION(execShowRestartMenu); \
+	DECLARE_FUNCTION(execShowSelectMapMenu); \
 	DECLARE_FUNCTION(execShowStartMenu); \
 	DECLARE_FUNCTION(execShowGameHUD); \
 	DECLARE_FUNCTION(execGetHUDWidget);
