@@ -16,6 +16,7 @@ class AActor;
 #define OBSTACLEPUZZLE_PlatformSpawner_generated_h
 
 #define FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformSpawner_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execSpawnComparePhase); \
 	DECLARE_FUNCTION(execVoidSpawnRandomPlatform); \
 	DECLARE_FUNCTION(execSpawnRandomPlatform); \
 	DECLARE_FUNCTION(execSpawnActor);

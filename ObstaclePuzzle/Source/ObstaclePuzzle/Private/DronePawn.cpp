@@ -280,6 +280,11 @@ void ADronePawn::OperateHealth(float Amount, bool bIsPlus)
 	}
 }
 
+void ADronePawn::SetHealth(float hp)
+{
+	Health = hp;
+}
+
 float ADronePawn::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
 	OperateHealth(DamageAmount, false);

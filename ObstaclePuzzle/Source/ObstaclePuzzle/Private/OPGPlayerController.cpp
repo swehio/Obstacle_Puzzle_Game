@@ -17,7 +17,9 @@ AOPGPlayerController::AOPGPlayerController() :
 	StartMenuWidgetClass(nullptr),
 	StartMenuWidgetInstance(nullptr),
 	RestartMenuWidgetClass(nullptr),
-	RestartMenuWidgetInstance(nullptr)
+	RestartMenuWidgetInstance(nullptr),
+	SelectMapMenuWidgetClass(nullptr),
+	SelectMapMenuWidgetInstance(nullptr)
 {
 }
 
@@ -41,6 +43,10 @@ void AOPGPlayerController::BeginPlay()
 	if (CurrentMapName.Contains("LevelStart"))
 	{
 		ShowStartMenu();
+	}
+	else if (CurrentMapName.Contains("LevelSelectMap"))
+	{
+		ShowSelectMapMenu();
 	}
 }
 
@@ -105,6 +111,25 @@ void AOPGPlayerController::ShowStartMenu()
 		if (StartMenuWidgetInstance)
 		{
 			StartMenuWidgetInstance->AddToViewport();
+
+			bShowMouseCursor = true;
+			SetInputMode(FInputModeUIOnly());
+		}
+	}
+}
+
+void AOPGPlayerController::ShowSelectMapMenu()
+{
+	InitializeWidgetInstance();
+
+
+	if (SelectMapMenuWidgetClass)
+	{
+		SelectMapMenuWidgetInstance = CreateWidget<UUserWidget>(this, SelectMapMenuWidgetClass);
+		
+		if (SelectMapMenuWidgetInstance)
+		{
+			SelectMapMenuWidgetInstance->AddToViewport();
 
 			bShowMouseCursor = true;
 			SetInputMode(FInputModeUIOnly());

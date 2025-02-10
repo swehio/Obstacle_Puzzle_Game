@@ -23,6 +23,8 @@ public:
 	AActor* SpawnRandomPlatform();
 	UFUNCTION(BlueprintCallable, Category = "Spawning")
 	void VoidSpawnRandomPlatform();
+	UFUNCTION()
+	void SpawnComparePhase();
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -34,11 +36,20 @@ protected:
 	float SpawnRepeatTime;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
 	float PlatformSpeed;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
+	int ActivePhase;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Spawning")
+	bool bActive;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Spawning")
+	int CurrentPhase;
+
 
 	struct FPlatformSpawnRow* GetRandomPlatform() const;
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+
 
 public:	
 	// Called every frame

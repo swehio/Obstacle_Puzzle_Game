@@ -66,6 +66,35 @@ DEFINE_FUNCTION(APlatformSpawner::execSpawnActor)
 }
 // End Class APlatformSpawner Function SpawnActor
 
+// Begin Class APlatformSpawner Function SpawnComparePhase
+struct Z_Construct_UFunction_APlatformSpawner_SpawnComparePhase_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/PlatformSpawner.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_APlatformSpawner_SpawnComparePhase_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_APlatformSpawner, nullptr, "SpawnComparePhase", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_APlatformSpawner_SpawnComparePhase_Statics::Function_MetaDataParams), Z_Construct_UFunction_APlatformSpawner_SpawnComparePhase_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_APlatformSpawner_SpawnComparePhase()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_APlatformSpawner_SpawnComparePhase_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(APlatformSpawner::execSpawnComparePhase)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->SpawnComparePhase();
+	P_NATIVE_END;
+}
+// End Class APlatformSpawner Function SpawnComparePhase
+
 // Begin Class APlatformSpawner Function SpawnRandomPlatform
 struct Z_Construct_UFunction_APlatformSpawner_SpawnRandomPlatform_Statics
 {
@@ -144,6 +173,7 @@ void APlatformSpawner::StaticRegisterNativesAPlatformSpawner()
 	UClass* Class = APlatformSpawner::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
 		{ "SpawnActor", &APlatformSpawner::execSpawnActor },
+		{ "SpawnComparePhase", &APlatformSpawner::execSpawnComparePhase },
 		{ "SpawnRandomPlatform", &APlatformSpawner::execSpawnRandomPlatform },
 		{ "VoidSpawnRandomPlatform", &APlatformSpawner::execVoidSpawnRandomPlatform },
 	};
@@ -184,15 +214,32 @@ struct Z_Construct_UClass_APlatformSpawner_Statics
 		{ "Category", "Spawning" },
 		{ "ModuleRelativePath", "Public/PlatformSpawner.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ActivePhase_MetaData[] = {
+		{ "Category", "Spawning" },
+		{ "ModuleRelativePath", "Public/PlatformSpawner.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_bActive_MetaData[] = {
+		{ "Category", "Spawning" },
+		{ "ModuleRelativePath", "Public/PlatformSpawner.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CurrentPhase_MetaData[] = {
+		{ "Category", "Spawning" },
+		{ "ModuleRelativePath", "Public/PlatformSpawner.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SpawnVolume;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_PlatformDataTable;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_SpawnRepeatTime;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_PlatformSpeed;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_ActivePhase;
+	static void NewProp_bActive_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_bActive;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_CurrentPhase;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_APlatformSpawner_SpawnActor, "SpawnActor" }, // 4253125655
+		{ &Z_Construct_UFunction_APlatformSpawner_SpawnComparePhase, "SpawnComparePhase" }, // 2862687486
 		{ &Z_Construct_UFunction_APlatformSpawner_SpawnRandomPlatform, "SpawnRandomPlatform" }, // 2466756952
 		{ &Z_Construct_UFunction_APlatformSpawner_VoidSpawnRandomPlatform, "VoidSpawnRandomPlatform" }, // 97177767
 	};
@@ -206,11 +253,21 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlatformSpawn
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APlatformSpawner_Statics::NewProp_PlatformDataTable = { "PlatformDataTable", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlatformSpawner, PlatformDataTable), Z_Construct_UClass_UDataTable_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PlatformDataTable_MetaData), NewProp_PlatformDataTable_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_APlatformSpawner_Statics::NewProp_SpawnRepeatTime = { "SpawnRepeatTime", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlatformSpawner, SpawnRepeatTime), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SpawnRepeatTime_MetaData), NewProp_SpawnRepeatTime_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_APlatformSpawner_Statics::NewProp_PlatformSpeed = { "PlatformSpeed", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlatformSpawner, PlatformSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PlatformSpeed_MetaData), NewProp_PlatformSpeed_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_APlatformSpawner_Statics::NewProp_ActivePhase = { "ActivePhase", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlatformSpawner, ActivePhase), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ActivePhase_MetaData), NewProp_ActivePhase_MetaData) };
+void Z_Construct_UClass_APlatformSpawner_Statics::NewProp_bActive_SetBit(void* Obj)
+{
+	((APlatformSpawner*)Obj)->bActive = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_APlatformSpawner_Statics::NewProp_bActive = { "bActive", nullptr, (EPropertyFlags)0x0020080000020005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(APlatformSpawner), &Z_Construct_UClass_APlatformSpawner_Statics::NewProp_bActive_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_bActive_MetaData), NewProp_bActive_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_APlatformSpawner_Statics::NewProp_CurrentPhase = { "CurrentPhase", nullptr, (EPropertyFlags)0x0020080000020005, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(APlatformSpawner, CurrentPhase), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CurrentPhase_MetaData), NewProp_CurrentPhase_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APlatformSpawner_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlatformSpawner_Statics::NewProp_SpawnVolume,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlatformSpawner_Statics::NewProp_PlatformDataTable,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlatformSpawner_Statics::NewProp_SpawnRepeatTime,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlatformSpawner_Statics::NewProp_PlatformSpeed,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlatformSpawner_Statics::NewProp_ActivePhase,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlatformSpawner_Statics::NewProp_bActive,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APlatformSpawner_Statics::NewProp_CurrentPhase,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_APlatformSpawner_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_APlatformSpawner_Statics::DependentSingletons[])() = {
@@ -253,10 +310,10 @@ APlatformSpawner::~APlatformSpawner() {}
 struct Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformSpawner_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_APlatformSpawner, APlatformSpawner::StaticClass, TEXT("APlatformSpawner"), &Z_Registration_Info_UClass_APlatformSpawner, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlatformSpawner), 3865199519U) },
+		{ Z_Construct_UClass_APlatformSpawner, APlatformSpawner::StaticClass, TEXT("APlatformSpawner"), &Z_Registration_Info_UClass_APlatformSpawner, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(APlatformSpawner), 2450985377U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformSpawner_h_3535258620(TEXT("/Script/ObstaclePuzzle"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformSpawner_h_1783624132(TEXT("/Script/ObstaclePuzzle"),
 	Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformSpawner_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_ObstaclePuzzle_Source_ObstaclePuzzle_Public_PlatformSpawner_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
